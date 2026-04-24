@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import logoMark from "@/assets/logo-mark.png";
 
 interface LogoProps {
   className?: string;
@@ -8,12 +7,6 @@ interface LogoProps {
 
 const Logo = ({ className = "", showTagline = false }: LogoProps) => (
   <Link to="/" className={`inline-flex flex-col items-center group ${className}`} aria-label="Magizhchi Moments home">
-    <img
-      src={logoMark}
-      alt="Magizhchi Moments monogram"
-      className="h-12 md:h-14 w-auto mb-2 transition-smooth group-hover:scale-105"
-      loading="eager"
-    />
     <span className="font-serif text-2xl md:text-3xl tracking-[0.18em] text-gradient-gold leading-none">
       MAGIZHCHI
     </span>

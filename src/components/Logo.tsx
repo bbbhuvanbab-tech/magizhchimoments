@@ -14,7 +14,7 @@ const Logo = ({ className = "", showTagline = false }: LogoProps) => (
       aria-hidden="true"
       className="h-12 md:h-14 w-auto mb-2 transition-transform duration-500 group-hover:scale-105"
     />
-    <span className="font-serif text-base md:text-lg tracking-[0.25em] uppercase text-foreground">
+    <span className="font-serif text-base md:text-lg tracking-[0.25em] uppercase text-primary">
       Magizhchi Moments
     </span>
     {showTagline && (

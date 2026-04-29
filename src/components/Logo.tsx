@@ -14,12 +14,6 @@ const Logo = ({ className = "", showTagline = false }: LogoProps) => (
       aria-hidden="true"
       className="h-12 md:h-14 w-auto mb-2 transition-transform duration-500 group-hover:scale-105"
     />
-    <span className="font-serif text-2xl md:text-3xl tracking-[0.18em] text-gradient-gold leading-none">
-      MAGIZHCHI
-    </span>
-    <span className="font-serif text-[10px] md:text-xs tracking-[0.5em] text-primary/80 mt-1">
-      M O M E N T S
-    </span>
     {showTagline && (
       <span className="text-[10px] tracking-[0.3em] text-muted-foreground mt-2 uppercase">
         Luxury Event Atelier

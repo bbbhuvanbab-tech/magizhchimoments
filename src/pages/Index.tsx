@@ -23,7 +23,7 @@ const Index = () => {
             — Luxury Event Atelier —
           </p>
           <h1 className="font-serif text-5xl md:text-7xl text-gradient-gold leading-[1.05] max-w-5xl animate-fade-up opacity-0 text-center font-extrabold lg:text-7xl" style={{ animationDelay: "0.4s" }}>
-            Crafted Celebrations,&nbsp;{"\n"}Quietly Unforgettable.
+            Crafted Celebrations,<br />Quietly Unforgettable.
           </h1>
           <p className="text-base mt-8 max-w-xl leading-relaxed animate-fade-up opacity-0 md:text-xl text-secondary-foreground" style={{ animationDelay: "0.7s" }}>
             From sacred mandaps to intimate stories — every Magizhchi Moment Event is designed with Intention, Restraint, and Reverence.

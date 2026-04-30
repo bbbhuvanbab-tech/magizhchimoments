@@ -32,7 +32,7 @@ import birthday6 from "@/assets/birthday-6.jpg";
 import birthday7 from "@/assets/birthday-7.jpg";
 
 export const weddings = [
-  { src: wedding1, alt: "The Bridal Mandap" },
+  { src: wedding1, alt: "\n" },
   { src: wedding2, alt: "Reception in Bloom" },
   { src: wedding3, alt: "An Ivory Vow" },
   { src: wedding4, alt: "Sacred Vows" },

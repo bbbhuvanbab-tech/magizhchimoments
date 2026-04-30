@@ -26,7 +26,7 @@ const Index = () => {
             Crafted Celebrations,&nbsp;{"\n"}Quietly Unforgettable.
           </h1>
           <p className="text-base mt-8 max-w-xl leading-relaxed animate-fade-up opacity-0 md:text-xl text-secondary-foreground" style={{ animationDelay: "0.7s" }}>
-            From sacred mandaps to intimate soirées — every Magizhchi moment is designed with intention, restraint, and reverence.
+            From sacred mandaps to intimate stories — every Magizhchi Moment Event is designed with Intention, Restraint, and Reverence.
           </p>
           <div className="mt-10 flex flex-col sm:flex-row gap-4 animate-fade-up opacity-0" style={{ animationDelay: "1s" }}>
             <Link

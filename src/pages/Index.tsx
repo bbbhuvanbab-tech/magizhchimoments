@@ -22,8 +22,8 @@ const Index = () => {
           <p className="text-xs md:text-sm tracking-[0.5em] uppercase text-primary mb-6 animate-fade-in opacity-0" style={{ animationDelay: "0.2s" }}>
             — Luxury Event Atelier —
           </p>
-          <h1 className="font-serif text-5xl md:text-7xl text-gradient-gold leading-[1.05] max-w-5xl animate-fade-up opacity-0 text-center lg:text-9xl" style={{ animationDelay: "0.4s" }}>
-            Crafted Celebrations,{"\n"}Quietly Unforgettable.
+          <h1 className="font-serif text-5xl md:text-7xl text-gradient-gold leading-[1.05] max-w-5xl animate-fade-up opacity-0 text-center font-extrabold lg:text-7xl" style={{ animationDelay: "0.4s" }}>
+            Crafted Celebrations,&nbsp;{"\n"}Quietly Unforgettable.
           </h1>
           <p className="text-base md:text-lg text-foreground/80 mt-8 max-w-xl leading-relaxed animate-fade-up opacity-0" style={{ animationDelay: "0.7s" }}>
             From sacred mandaps to intimate soirées — every Magizhchi moment is designed with intention, restraint, and reverence.

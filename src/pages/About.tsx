@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import SectionHeader from "@/components/SectionHeader";
-import wedding3 from "@/assets/wedding-3.jpg";
+import engagement1 from "@/assets/engagement-1.jpg";
 import engagement3 from "@/assets/engagement-3.jpg";
 
 const philosophy = [
@@ -16,7 +16,7 @@ const About = () => (
       <SectionHeader eyebrow="Our Story" title="Where Moments Become Heirlooms" />
       <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-center max-w-6xl mx-auto">
         <div className="relative aspect-[3/4] overflow-hidden border border-border/40">
-          <img src={wedding3} alt="Magizhchi Moments brand story" loading="lazy" className="w-full h-full object-cover" />
+          <img src={engagement1} alt="Magizhchi Moments brand story" loading="lazy" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-background/20" />
         </div>
         <div className="space-y-6 text-muted-foreground leading-relaxed text-base md:text-lg">

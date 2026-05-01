@@ -33,18 +33,18 @@ import birthday7 from "@/assets/birthday-7.jpg";
 
 export const weddings = [
   { src: wedding1, alt: "\n" },
-  { src: wedding2, alt: "Reception in Bloom" },
-  { src: wedding3, alt: "An Ivory Vow" },
-  { src: wedding4, alt: "Sacred Vows" },
-  { src: wedding5, alt: "Reception Reverie" },
-  { src: wedding6, alt: "The Gilded Ceremony" },
-  { src: wedding7, alt: "Floral Archway" },
-  { src: wedding8, alt: "Mehndi Evening" },
-  { src: wedding9, alt: "The Tablescape" },
-  { src: wedding10, alt: "Candlelit Aisle" },
-  { src: wedding11, alt: "Heritage Mandap" },
-  { src: wedding12, alt: "Reception Glow" },
-  { src: wedding13, alt: "Forever, In Bloom" },
+  { src: wedding2, alt: "\n" },
+  { src: wedding3, alt: "\n" },
+  { src: wedding4, alt: "\n" },
+  { src: wedding5, alt: "\n" },
+  { src: wedding6, alt: "\n" },
+  { src: wedding7, alt: "\n" },
+  { src: wedding8, alt: "\n" },
+  { src: wedding9, alt: "\n" },
+  { src: wedding10, alt: "\n" },
+  { src: wedding11, alt: "\n" },
+  { src: wedding12, alt: "\n" },
+  { src: wedding13, alt: "\n" },
 ];
 
 export const engagements = [

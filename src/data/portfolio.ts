@@ -51,7 +51,7 @@ export const engagements = [
   { src: engagement1, alt: "The Promise" },
   { src: engagement2, alt: "Hands & Heirlooms" },
   { src: engagement3, alt: "Rose Wall Sanctuary" },
-  { src: engagement4, alt: "Golden Hour" },
+  { src: baby2, alt: "Golden Hour" },
   { src: engagement5, alt: "Quiet Beginnings" },
   { src: engagement6, alt: "A Gilded Vow" },
   { src: engagement7, alt: "The Couple" },
@@ -60,7 +60,7 @@ export const engagements = [
 
 export const babyShowers = [
   { src: baby1, alt: "Pastel Reverie" },
-  { src: baby2, alt: "Seemantham Ritual" },
+  { src: engagement4, alt: "Seemantham Ritual" },
   { src: baby3, alt: "Sweet Beginnings" },
   { src: baby4, alt: "Tender Tablescape" },
 ];

@@ -33,7 +33,7 @@ import birthday7 from "@/assets/birthday-7.jpg";
 
 export const weddings = [
   { src: wedding1, alt: "\n" },
-  { src: wedding2, alt: "\n" },
+  { src: engagement2, alt: "\n" },
   { src: engagement1, alt: "\n" },
   { src: wedding4, alt: "\n" },
   { src: wedding5, alt: "\n" },
@@ -49,7 +49,7 @@ export const weddings = [
 
 export const engagements = [
   { src: wedding3, alt: "The Promise" },
-  { src: engagement2, alt: "Hands & Heirlooms" },
+  { src: wedding2, alt: "Hands & Heirlooms" },
   { src: engagement3, alt: "Rose Wall Sanctuary" },
   { src: baby2, alt: "Golden Hour" },
   { src: engagement5, alt: "Quiet Beginnings" },

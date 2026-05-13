@@ -38,6 +38,7 @@ import birthday7 from "@/assets/birthday-7.jpg";
 export const weddings = [
   { src: wedding1, alt: "\n" },
   { src: engagement1, alt: "\n" },
+  { src: wedding14, alt: "\n" },
   { src: wedding4, alt: "\n" },
   { src: wedding5, alt: "\n" },
   { src: wedding6, alt: "\n" },
@@ -48,12 +49,14 @@ export const weddings = [
   { src: wedding11, alt: "\n" },
   { src: wedding12, alt: "\n" },
   { src: wedding13, alt: "\n" },
-  { src: wedding14, alt: "\n" },
 ];
 
 export const engagements = [
   { src: wedding3, alt: "The Promise" },
   { src: wedding2, alt: "Hands & Heirlooms" },
+  { src: engagement9, alt: "" },
+  { src: engagement10, alt: "" },
+  { src: engagement11, alt: "" },
   { src: engagement2, alt: "Engagement Moment" },
   { src: engagement3, alt: "Rose Wall Sanctuary" },
   { src: baby2, alt: "Golden Hour" },
@@ -61,9 +64,6 @@ export const engagements = [
   { src: engagement6, alt: "A Gilded Vow" },
   { src: engagement7, alt: "The Couple" },
   { src: engagement8, alt: "Rings & Ritual" },
-  { src: engagement9, alt: "" },
-  { src: engagement10, alt: "" },
-  { src: engagement11, alt: "" },
 ];
 
 export const babyShowers = [

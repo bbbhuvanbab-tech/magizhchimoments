@@ -24,6 +24,9 @@ import engagement5 from "@/assets/engagement-5.jpg";
 import engagement6 from "@/assets/engagement-6.jpg";
 import engagement7 from "@/assets/engagement-7.jpg";
 import engagement8 from "@/assets/engagement-8.jpg";
+import engagement9 from "@/assets/engagement-9.jpg";
+import engagement10 from "@/assets/engagement-10.jpg";
+import engagement11 from "@/assets/engagement-11.jpg";
 import birthday1 from "@/assets/birthday-1.jpg";
 import birthday2 from "@/assets/birthday-2.jpg";
 import birthday3 from "@/assets/birthday-3.jpg";
@@ -58,6 +61,9 @@ export const engagements = [
   { src: engagement6, alt: "A Gilded Vow" },
   { src: engagement7, alt: "The Couple" },
   { src: engagement8, alt: "Rings & Ritual" },
+  { src: engagement9, alt: "" },
+  { src: engagement10, alt: "" },
+  { src: engagement11, alt: "" },
 ];
 
 export const babyShowers = [

@@ -16,6 +16,8 @@ import baby1 from "@/assets/baby-1.jpg";
 import baby2 from "@/assets/baby-2.jpg";
 import baby3 from "@/assets/baby-3.jpg";
 import baby4 from "@/assets/baby-4.jpg";
+import baby5 from "@/assets/baby-5.jpg";
+import baby6 from "@/assets/baby-6.jpg";
 import engagement1 from "@/assets/engagement-1.jpg";
 import engagement2 from "@/assets/engagement-2.jpg";
 import engagement3 from "@/assets/engagement-3.jpg";
@@ -68,6 +70,8 @@ export const engagements = [
 
 export const babyShowers = [
   { src: baby1, alt: "Pastel Reverie" },
+  { src: baby5, alt: "" },
+  { src: baby6, alt: "" },
   { src: engagement4, alt: "Seemantham Ritual" },
   { src: baby3, alt: "Sweet Beginnings" },
   { src: baby4, alt: "Tender Tablescape" },

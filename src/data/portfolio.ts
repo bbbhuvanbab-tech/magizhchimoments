@@ -87,7 +87,6 @@ export const babyShowers = [
 ];
 
 export const birthdays = [
-  { src: birthday1, alt: "Onyx & Gold Soirée" },
   { src: birthday16, alt: "" },
   { src: birthday15, alt: "" },
   { src: birthday14, alt: "" },

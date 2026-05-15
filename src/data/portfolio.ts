@@ -36,6 +36,12 @@ import birthday4 from "@/assets/birthday-4.jpg";
 import birthday5 from "@/assets/birthday-5.jpg";
 import birthday6 from "@/assets/birthday-6.jpg";
 import birthday7 from "@/assets/birthday-7.jpg";
+import birthday8 from "@/assets/birthday-8.jpg";
+import birthday9 from "@/assets/birthday-9.jpg";
+import birthday10 from "@/assets/birthday-10.jpg";
+import birthday11 from "@/assets/birthday-11.jpg";
+import birthday12 from "@/assets/birthday-12.jpg";
+import birthday13 from "@/assets/birthday-13.jpg";
 
 export const weddings = [
   { src: wedding1, alt: "\n" },
@@ -79,6 +85,12 @@ export const babyShowers = [
 
 export const birthdays = [
   { src: birthday1, alt: "Onyx & Gold Soirée" },
+  { src: birthday8, alt: "" },
+  { src: birthday9, alt: "" },
+  { src: birthday10, alt: "" },
+  { src: birthday11, alt: "" },
+  { src: birthday12, alt: "" },
+  { src: birthday13, alt: "" },
   { src: birthday2, alt: "Midnight Celebration" },
   { src: birthday3, alt: "Confetti & Candlelight" },
   { src: birthday4, alt: "The Cake Moment" },

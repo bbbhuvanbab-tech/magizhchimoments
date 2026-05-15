@@ -44,6 +44,7 @@ import birthday12 from "@/assets/birthday-12.jpg";
 import birthday13 from "@/assets/birthday-13.jpg";
 import birthday14 from "@/assets/birthday-14.jpg";
 import birthday15 from "@/assets/birthday-15.jpg";
+import birthday16 from "@/assets/birthday-16.jpg";
 
 export const weddings = [
   { src: wedding1, alt: "\n" },
@@ -87,6 +88,7 @@ export const babyShowers = [
 
 export const birthdays = [
   { src: birthday1, alt: "Onyx & Gold Soirée" },
+  { src: birthday16, alt: "" },
   { src: birthday15, alt: "" },
   { src: birthday14, alt: "" },
   { src: birthday8, alt: "" },

@@ -47,19 +47,7 @@ import birthday15 from "@/assets/birthday-15.jpg";
 import birthday16 from "@/assets/birthday-16.jpg";
 
 export const weddings = [
-  { src: wedding1, alt: "\n" },
-  { src: engagement1, alt: "\n" },
-  { src: wedding14, alt: "\n" },
-  { src: wedding4, alt: "\n" },
-  { src: wedding5, alt: "\n" },
-  { src: wedding6, alt: "\n" },
-  { src: wedding7, alt: "\n" },
-  { src: wedding8, alt: "\n" },
-  { src: wedding9, alt: "\n" },
-  { src: wedding10, alt: "\n" },
-  { src: wedding11, alt: "\n" },
-  { src: wedding12, alt: "\n" },
-  { src: wedding13, alt: "\n" },
+  { src: wedding14, alt: "" },
 ];
 
 export const engagements = [

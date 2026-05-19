@@ -12,6 +12,8 @@ import wedding11 from "@/assets/wedding-11.jpg";
 import wedding12 from "@/assets/wedding-12.jpg";
 import wedding13 from "@/assets/wedding-13.jpg";
 import wedding14 from "@/assets/wedding-14.jpg";
+import wedding15 from "@/assets/wedding-15.jpg";
+import wedding16 from "@/assets/wedding-16.jpg";
 import baby1 from "@/assets/baby-1.jpg";
 import baby2 from "@/assets/baby-2.jpg";
 import baby3 from "@/assets/baby-3.jpg";
@@ -47,6 +49,8 @@ import birthday15 from "@/assets/birthday-15.jpg";
 import birthday16 from "@/assets/birthday-16.jpg";
 
 export const weddings = [
+  { src: wedding15, alt: "" },
+  { src: wedding16, alt: "" },
   { src: wedding14, alt: "" },
 ];
 

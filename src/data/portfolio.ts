@@ -63,27 +63,14 @@ export const weddings = [
 ];
 
 export const engagements = [
-  { src: wedding3, alt: "The Promise" },
-  { src: wedding2, alt: "Hands & Heirlooms" },
   { src: engagement9, alt: "" },
   { src: engagement10, alt: "" },
   { src: engagement11, alt: "" },
-  { src: engagement2, alt: "Engagement Moment" },
-  { src: engagement3, alt: "Rose Wall Sanctuary" },
-  { src: baby2, alt: "Golden Hour" },
-  { src: engagement5, alt: "Quiet Beginnings" },
-  { src: engagement6, alt: "A Gilded Vow" },
-  { src: engagement7, alt: "The Couple" },
-  { src: engagement8, alt: "Rings & Ritual" },
 ];
 
 export const babyShowers = [
-  { src: baby1, alt: "Pastel Reverie" },
   { src: baby5, alt: "" },
   { src: baby6, alt: "" },
-  { src: engagement4, alt: "Seemantham Ritual" },
-  { src: baby3, alt: "Sweet Beginnings" },
-  { src: baby4, alt: "Tender Tablescape" },
 ];
 
 export const birthdays = [
@@ -96,12 +83,6 @@ export const birthdays = [
   { src: birthday11, alt: "" },
   { src: birthday12, alt: "" },
   { src: birthday13, alt: "" },
-  { src: birthday2, alt: "Midnight Celebration" },
-  { src: birthday3, alt: "Confetti & Candlelight" },
-  { src: birthday4, alt: "The Cake Moment" },
-  { src: birthday5, alt: "Florals & Flames" },
-  { src: birthday6, alt: "Gilded Milestone" },
-  { src: birthday7, alt: "A Quiet Toast" },
 ];
 
 export const categories = [

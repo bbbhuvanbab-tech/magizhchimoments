@@ -31,6 +31,10 @@ import engagement8 from "@/assets/engagement-8.jpg";
 import engagement9 from "@/assets/engagement-9.jpg";
 import engagement10 from "@/assets/engagement-10.jpg";
 import engagement11 from "@/assets/engagement-11.jpg";
+import engagement12 from "@/assets/engagement-12.jpg";
+import engagement13 from "@/assets/engagement-13.jpg";
+import engagement14 from "@/assets/engagement-14.jpg";
+import engagement15 from "@/assets/engagement-15.jpg";
 import birthday1 from "@/assets/birthday-1.jpg";
 import birthday2 from "@/assets/birthday-2.jpg";
 import birthday3 from "@/assets/birthday-3.jpg";
@@ -58,6 +62,10 @@ export const engagements = [
   { src: engagement9, alt: "" },
   { src: engagement10, alt: "" },
   { src: engagement11, alt: "" },
+  { src: engagement12, alt: "" },
+  { src: engagement13, alt: "" },
+  { src: engagement14, alt: "" },
+  { src: engagement15, alt: "" },
 ];
 
 export const babyShowers = [

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import SectionHeader from "@/components/SectionHeader";
 import engagement1 from "@/assets/engagement-1.jpg";
-import engagement3 from "@/assets/engagement-3.jpg";
+import wedding16 from "@/assets/wedding-16.jpg";
 
 const philosophy = [
   { n: "01", t: "Restraint over excess", d: "We believe luxury whispers. Every flower, candle and detail is chosen with intention — never to fill space, only to elevate it." },
@@ -82,7 +82,7 @@ const About = () => (
           </p>
         </div>
         <div className="order-1 md:order-2 relative aspect-[3/4] overflow-hidden border border-border/40">
-          <img src={engagement3} alt="Signature floral installation" loading="lazy" className="w-full h-full object-cover" />
+          <img src={wedding16} alt="Signature floral installation" loading="lazy" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-background/20" />
         </div>
       </div>

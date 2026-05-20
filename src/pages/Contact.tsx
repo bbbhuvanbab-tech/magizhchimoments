@@ -2,14 +2,30 @@ import { useState } from "react";
 import { Mail, Phone, Instagram, MapPin } from "lucide-react";
 import SectionHeader from "@/components/SectionHeader";
 import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
 
 const Contact = () => {
-  const [form, setForm] = useState({ name: "", email: "", event: "", date: "", message: "" });
+  const [form, setForm] = useState({ name: "", phone: "", email: "", event: "", date: "", message: "" });
+  const [submitting, setSubmitting] = useState(false);
 
-  const submit = (e: React.FormEvent) => {
+  const submit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setSubmitting(true);
+    const { error } = await supabase.from("enquiries").insert({
+      name: form.name,
+      phone: form.phone || null,
+      email: form.email,
+      event_type: form.event || null,
+      event_date: form.date || null,
+      message: form.message,
+    });
+    setSubmitting(false);
+    if (error) {
+      toast.error("Something went wrong. Please try again.");
+      return;
+    }
     toast.success("Thank you — we'll be in touch within 48 hours.");
-    setForm({ name: "", email: "", event: "", date: "", message: "" });
+    setForm({ name: "", phone: "", email: "", event: "", date: "", message: "" });
   };
 
   return (
@@ -75,6 +91,11 @@ const Contact = () => {
                   className="w-full bg-transparent border-b border-border/60 py-3 text-foreground focus:outline-none focus:border-primary transition-smooth" />
               </div>
               <div>
+                <label className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground block mb-2">Phone</label>
+                <input type="tel" value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                  className="w-full bg-transparent border-b border-border/60 py-3 text-foreground focus:outline-none focus:border-primary transition-smooth" />
+              </div>
+              <div>
                 <label className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground block mb-2">Event Type</label>
                 <select value={form.event} onChange={(e) => setForm({ ...form, event: e.target.value })}
                   className="w-full bg-transparent border-b border-border/60 py-3 text-foreground focus:outline-none focus:border-primary transition-smooth">
@@ -98,8 +119,9 @@ const Contact = () => {
                 className="w-full bg-transparent border-b border-border/60 py-3 text-foreground focus:outline-none focus:border-primary transition-smooth resize-none" />
             </div>
             <button type="submit"
-              className="w-full sm:w-auto px-10 py-4 bg-gradient-gold text-primary-foreground text-xs tracking-[0.3em] uppercase hover-gold-glow transition-smooth">
-              Send Enquiry
+              disabled={submitting}
+              className="w-full sm:w-auto px-10 py-4 bg-gradient-gold text-primary-foreground text-xs tracking-[0.3em] uppercase hover-gold-glow transition-smooth disabled:opacity-60">
+              {submitting ? "Sending…" : "Send Enquiry"}
             </button>
           </form>
         </div>

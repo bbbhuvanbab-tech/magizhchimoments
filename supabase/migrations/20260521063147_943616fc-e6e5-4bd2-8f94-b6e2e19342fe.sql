@@ -1,0 +1,1 @@
+ALTER TABLE public.enquiries ADD COLUMN status TEXT NOT NULL DEFAULT 'New';

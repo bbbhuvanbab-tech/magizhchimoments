@@ -20,6 +20,7 @@ type Enquiry = {
   event_type: string | null;
   event_date: string | null;
   message: string;
+  status: string;
   created_at: string;
 };
 
@@ -100,6 +101,7 @@ const AdminEnquiries = () => {
                   <TableHead>Event</TableHead>
                   <TableHead>Date</TableHead>
                   <TableHead>Message</TableHead>
+                  <TableHead>Status</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -114,6 +116,11 @@ const AdminEnquiries = () => {
                     <TableCell>{e.event_type || "—"}</TableCell>
                     <TableCell className="whitespace-nowrap">{e.event_date || "—"}</TableCell>
                     <TableCell className="max-w-md whitespace-pre-wrap text-sm">{e.message}</TableCell>
+                    <TableCell>
+                      <span className="inline-block px-2 py-1 text-[10px] tracking-[0.2em] uppercase border border-border/60 rounded-full">
+                        {e.status}
+                      </span>
+                    </TableCell>
                   </TableRow>
                 ))}
               </TableBody>

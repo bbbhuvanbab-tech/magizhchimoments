@@ -25,7 +25,7 @@ const Footer = () => (
           <h4 className="font-serif text-lg text-primary mb-5 tracking-wider">Connect</h4>
           <ul className="space-y-3 text-sm text-muted-foreground">
             <li className="flex items-center justify-center md:justify-start gap-3">
-              <Mail size={14} className="text-primary" /> hello@magizhchimoments.com
+              <Mail size={14} className="text-primary" /> magizhchimoments22@gmail.com
             </li>
             <li className="flex items-center justify-center md:justify-start gap-3">
               <Phone size={14} className="text-primary" /> +91 8015479682

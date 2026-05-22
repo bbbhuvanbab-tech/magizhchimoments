@@ -28,7 +28,7 @@ const Footer = () => (
               <Mail size={14} className="text-primary" /> hello@magizhchimoments.com
             </li>
             <li className="flex items-center justify-center md:justify-start gap-3">
-              <Phone size={14} className="text-primary" /> +91 00000 00000
+              <Phone size={14} className="text-primary" /> +91 8015479682
             </li>
             <li className="flex items-center justify-center md:justify-start gap-3">
               <Instagram size={14} className="text-primary" /> @magizhchimoments

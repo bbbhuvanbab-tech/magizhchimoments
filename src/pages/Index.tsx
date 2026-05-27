@@ -96,7 +96,7 @@ const Index = () => {
           title="Milestones, Reimagined"
           subtitle="Sophisticated birthday soirées designed with restraint, drama and a hint of midnight gold."
         />
-        <CategoryGallery images={birthdays.slice(0, 2)} category="Birthday" variant="feature" />
+        <CategoryGallery images={birthdays.slice(0, 2)} category="Birthday" />
       </section>
 
       {/* CTA */}

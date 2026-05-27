@@ -55,7 +55,7 @@ const Index = () => {
           title="Vows Beneath Gilded Skies"
           subtitle="Sacred ceremonies and reception experiences designed for couples who value heritage, artistry and serenity."
         />
-        <CategoryGallery images={weddings.slice(0, 3)} category="Weddings" />
+        <CategoryGallery images={weddings.slice(0, 4)} category="Weddings" />
         <div className="text-center mt-14">
           <Link to="/portfolio" className="inline-flex items-center gap-3 text-primary text-xs tracking-[0.3em] uppercase border-b border-primary/40 pb-1 hover:border-primary transition-smooth">
             Explore Weddings <ArrowRight size={14} />

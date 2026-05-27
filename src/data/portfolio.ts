@@ -53,6 +53,11 @@ import birthday15 from "@/assets/birthday-15.jpg";
 import birthday16 from "@/assets/birthday-16.jpg";
 
 export const weddings = [
+  { src: "https://res.cloudinary.com/dipoqbdit/image/upload/v1779877108/DSCF4081_d4av7v.jpg", alt: "" },
+  { src: "https://res.cloudinary.com/dipoqbdit/image/upload/v1779877111/_SIV4748_chqu2y.jpg", alt: "" },
+  { src: "https://res.cloudinary.com/dipoqbdit/image/upload/v1779877110/IMG_20230611_001623_m2krdk.jpg", alt: "" },
+  { src: "https://res.cloudinary.com/dipoqbdit/image/upload/v1779877109/DSCF3578_iwxmbk.jpg", alt: "" },
+  { src: "https://res.cloudinary.com/dipoqbdit/image/upload/v1779876176/IMG-20240122-WA0019_eepubz.jpg", alt: "" },
   { src: wedding15, alt: "" },
   { src: wedding16, alt: "" },
   { src: wedding14, alt: "" },

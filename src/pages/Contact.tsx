@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Mail, Phone, Instagram, MapPin } from "lucide-react";
 import SectionHeader from "@/components/SectionHeader";
 import { toast } from "sonner";
-import { supabase } from "@/integrations/supabase/client";
+import { supabase, isSupabaseConfigured } from "@/integrations/supabase/client";
 
 const Contact = () => {
   const [form, setForm] = useState({ name: "", phone: "", email: "", event: "", date: "", message: "" });
@@ -10,6 +10,10 @@ const Contact = () => {
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!isSupabaseConfigured) {
+      toast.error("Service unavailable. Please try again later.");
+      return;
+    }
     setSubmitting(true);
     const { error } = await supabase.from("enquiries").insert({
       name: form.name,

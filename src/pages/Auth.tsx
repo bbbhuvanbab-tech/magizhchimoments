@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { supabase } from "@/integrations/supabase/client";
+import { supabase, isSupabaseConfigured } from "@/integrations/supabase/client";
 import { lovable } from "@/integrations/lovable";
 import SectionHeader from "@/components/SectionHeader";
 import { toast } from "sonner";
@@ -13,6 +13,7 @@ const Auth = () => {
   const [submitting, setSubmitting] = useState(false);
 
   useEffect(() => {
+    if (!isSupabaseConfigured) return;
     supabase.auth.getSession().then(({ data: { session } }) => {
       if (session) navigate("/admin/enquiries", { replace: true });
     });
@@ -20,6 +21,10 @@ const Auth = () => {
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!isSupabaseConfigured) {
+      toast.error("Authentication is not configured.");
+      return;
+    }
     setSubmitting(true);
     const { error } =
       mode === "signin"

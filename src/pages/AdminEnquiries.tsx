@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { supabase } from "@/integrations/supabase/client";
+import { supabase, isSupabaseConfigured } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
 import SectionHeader from "@/components/SectionHeader";
 import {
@@ -32,6 +32,10 @@ const AdminEnquiries = () => {
 
   useEffect(() => {
     if (authLoading) return;
+    if (!isSupabaseConfigured) {
+      setLoading(false);
+      return;
+    }
     if (!user) {
       navigate("/auth", { replace: true });
       return;

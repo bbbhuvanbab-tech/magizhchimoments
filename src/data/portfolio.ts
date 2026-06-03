@@ -47,3 +47,8 @@ export const fetchPortfolioImages = async () => {
 
   return results;
 };
+const { data, error } = await supabase.storage
+  .from('portfolio-images')
+  .list(folder, { limit: 10 });
+
+console.log('Folder:', folder, 'Data:', data, 'Error:', error);

@@ -1,11 +1,33 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
+import { useEffect, useState } from "react";
 import hero from "@/assets/hero.jpg";
 import SectionHeader from "@/components/SectionHeader";
 import CategoryGallery from "@/components/CategoryGallery";
-import { weddings, engagements, babyShowers, birthdays } from "@/data/portfolio";
+import { fetchPortfolioImages } from "@/data/portfolio";
+import type { PortfolioImage } from "@/data/portfolio";
 
 const Index = () => {
+  const [weddings, setWeddings] = useState<PortfolioImage[]>([]);
+  const [engagements, setEngagements] = useState<PortfolioImage[]>([]);
+  const [babyShowers, setBabyShowers] = useState<PortfolioImage[]>([]);
+  const [birthdays, setBirthdays] = useState<PortfolioImage[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchPortfolioImages().then((data) => {
+      setWeddings(data.weddings);
+      setEngagements(data.engagements);
+      setBabyShowers(data.babyShowers);
+      setBirthdays(data.birthdays);
+      setLoading(false);
+    });
+  }, []);
+
+  if (loading) {
+    return null; // Render empty while loading
+  }
+
   return (
     <div>
       {/* HERO */}

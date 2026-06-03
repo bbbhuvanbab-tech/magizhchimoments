@@ -1,98 +1,71 @@
-import wedding1 from "@/assets/wedding-1.jpg";
-import wedding2 from "@/assets/wedding-2.jpg";
-import wedding3 from "@/assets/wedding-3.jpg";
-import wedding4 from "@/assets/wedding-4.jpg";
-import wedding5 from "@/assets/wedding-5.jpg";
-import wedding6 from "@/assets/wedding-6.jpg";
-import wedding7 from "@/assets/wedding-7.jpg";
-import wedding8 from "@/assets/wedding-8.jpg";
-import wedding9 from "@/assets/wedding-9.jpg";
-import wedding10 from "@/assets/wedding-10.jpg";
-import wedding11 from "@/assets/wedding-11.jpg";
-import wedding12 from "@/assets/wedding-12.jpg";
-import wedding13 from "@/assets/wedding-13.jpg";
-import wedding14 from "@/assets/wedding-14.jpg";
-import wedding15 from "@/assets/wedding-15.jpg";
-import wedding16 from "@/assets/wedding-16.jpg";
-import baby1 from "@/assets/baby-1.jpg";
-import baby2 from "@/assets/baby-2.jpg";
-import baby3 from "@/assets/baby-3.jpg";
-import baby4 from "@/assets/baby-4.jpg";
-import baby5 from "@/assets/baby-5.jpg";
-import baby6 from "@/assets/baby-6.jpg";
-import engagement1 from "@/assets/engagement-1.jpg";
-import engagement2 from "@/assets/engagement-2.jpg";
-import engagement3 from "@/assets/engagement-3.jpg";
-import engagement4 from "@/assets/engagement-4.jpg";
-import engagement5 from "@/assets/engagement-5.jpg";
-import engagement6 from "@/assets/engagement-6.jpg";
-import engagement7 from "@/assets/engagement-7.jpg";
-import engagement8 from "@/assets/engagement-8.jpg";
-import engagement9 from "@/assets/engagement-9.jpg";
-import engagement10 from "@/assets/engagement-10.jpg";
-import engagement11 from "@/assets/engagement-11.jpg";
-import engagement12 from "@/assets/engagement-12.jpg";
-import engagement13 from "@/assets/engagement-13.jpg";
-import engagement14 from "@/assets/engagement-14.jpg";
-import engagement15 from "@/assets/engagement-15.jpg";
-import birthday1 from "@/assets/birthday-1.jpg";
-import birthday2 from "@/assets/birthday-2.jpg";
-import birthday3 from "@/assets/birthday-3.jpg";
-import birthday4 from "@/assets/birthday-4.jpg";
-import birthday5 from "@/assets/birthday-5.jpg";
-import birthday6 from "@/assets/birthday-6.jpg";
-import birthday7 from "@/assets/birthday-7.jpg";
-import birthday8 from "@/assets/birthday-8.jpg";
-import birthday9 from "@/assets/birthday-9.jpg";
-import birthday10 from "@/assets/birthday-10.jpg";
-import birthday11 from "@/assets/birthday-11.jpg";
-import birthday12 from "@/assets/birthday-12.jpg";
-import birthday13 from "@/assets/birthday-13.jpg";
-import birthday14 from "@/assets/birthday-14.jpg";
-import birthday15 from "@/assets/birthday-15.jpg";
-import birthday16 from "@/assets/birthday-16.jpg";
+import { supabase } from "@/integrations/supabase/client";
 
-export const weddings = [
-  { src: "https://res.cloudinary.com/dipoqbdit/image/upload/v1779877108/DSCF4081_d4av7v.jpg", alt: "" },
-  { src: "https://res.cloudinary.com/dipoqbdit/image/upload/v1779877111/_SIV4748_chqu2y.jpg", alt: "" },
-  { src: "https://res.cloudinary.com/dipoqbdit/image/upload/v1779877110/IMG_20230611_001623_m2krdk.jpg", alt: "" },
-  { src: "https://res.cloudinary.com/dipoqbdit/image/upload/v1779877109/DSCF3578_iwxmbk.jpg", alt: "" },
-  { src: "https://res.cloudinary.com/dipoqbdit/image/upload/v1779876176/IMG-20240122-WA0019_eepubz.jpg", alt: "" },
-  { src: wedding15, alt: "" },
-  { src: wedding16, alt: "" },
-  { src: wedding14, alt: "" },
-];
+export interface PortfolioImage {
+  src: string;
+  alt: string;
+}
 
-export const engagements = [
-  { src: engagement9, alt: "" },
-  { src: engagement10, alt: "" },
-  { src: engagement11, alt: "" },
-  { src: engagement12, alt: "" },
-  { src: engagement13, alt: "" },
-  { src: engagement14, alt: "" },
-  { src: engagement15, alt: "" },
-];
+export async function fetchPortfolioImages() {
+  const { data, error } = await supabase
+    .from("portfolio_images")
+    .select("image_url, alt_text, category")
+    .order("category")
+    .order("order_index");
 
-export const babyShowers = [
-  { src: baby5, alt: "" },
-  { src: baby6, alt: "" },
-];
+  if (error) {
+    console.error("Failed to fetch portfolio images:", error);
+    return {
+      weddings: [],
+      engagements: [],
+      babyShowers: [],
+      birthdays: [],
+    };
+  }
 
-export const birthdays = [
-  { src: birthday16, alt: "" },
-  { src: birthday15, alt: "" },
-  { src: birthday14, alt: "" },
-  { src: birthday8, alt: "" },
-  { src: birthday9, alt: "" },
-  { src: birthday10, alt: "" },
-  { src: birthday11, alt: "" },
-  { src: birthday12, alt: "" },
-  { src: birthday13, alt: "" },
-];
+  const images = data || [];
+  const weddings: PortfolioImage[] = [];
+  const engagements: PortfolioImage[] = [];
+  const babyShowers: PortfolioImage[] = [];
+  const birthdays: PortfolioImage[] = [];
 
-export const categories = [
-  { name: "Weddings", slug: "weddings", items: weddings },
-  { name: "Engagement", slug: "engagement", items: engagements },
-  { name: "Baby Shower", slug: "baby-shower", items: babyShowers },
-  { name: "Birthday", slug: "birthday", items: birthdays },
-];
+  images.forEach((img) => {
+    const item = { src: img.image_url, alt: img.alt_text || "" };
+    switch (img.category) {
+      case "wedding":
+        weddings.push(item);
+        break;
+      case "engagement":
+        engagements.push(item);
+        break;
+      case "baby_shower":
+        babyShowers.push(item);
+        break;
+      case "birthday":
+        birthdays.push(item);
+        break;
+    }
+  });
+
+  // Add fallback Cloudinary images if no wedding images
+  if (weddings.length === 0) {
+    weddings.push(
+      { src: "https://res.cloudinary.com/dipoqbdit/image/upload/v1779877108/DSCF4081_d4av7v.jpg", alt: "" },
+      { src: "https://res.cloudinary.com/dipoqbdit/image/upload/v1779877111/_SIV4748_chqu2y.jpg", alt: "" },
+      { src: "https://res.cloudinary.com/dipoqbdit/image/upload/v1779877110/IMG_20230611_001623_m2krdk.jpg", alt: "" },
+      { src: "https://res.cloudinary.com/dipoqbdit/image/upload/v1779877109/DSCF3578_iwxmbk.jpg", alt: "" },
+      { src: "https://res.cloudinary.com/dipoqbdit/image/upload/v1779876176/IMG-20240122-WA0019_eepubz.jpg", alt: "" }
+    );
+  }
+
+  return { weddings, engagements, babyShowers, birthdays };
+}
+
+export async function getCategories() {
+  const images = await fetchPortfolioImages();
+  return [
+    { name: "Weddings", slug: "weddings", items: images.weddings },
+    { name: "Engagement", slug: "engagement", items: images.engagements },
+    { name: "Baby Shower", slug: "baby-shower", items: images.babyShowers },
+    { name: "Birthday", slug: "birthday", items: images.birthdays },
+  ];
+}

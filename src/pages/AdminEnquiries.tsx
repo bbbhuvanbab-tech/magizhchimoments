@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { supabase, isSupabaseConfigured } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
 import SectionHeader from "@/components/SectionHeader";
+import { AdminImageUpload } from "@/components/AdminImageUpload";
 import {
   Table,
   TableBody,
@@ -11,6 +12,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 type Enquiry = {
   id: string;
@@ -76,6 +78,10 @@ const AdminEnquiries = () => {
     );
   }
 
+  const handleUploadSuccess = () => {
+    // Refresh portfolio if needed - can be triggered from other components
+  };
+
   return (
     <div className="pt-32 md:pt-40 pb-24">
       <div className="container mx-auto px-6">
@@ -86,10 +92,18 @@ const AdminEnquiries = () => {
         </div>
         <SectionHeader
           eyebrow="Admin"
-          title="Enquiries"
-          subtitle={`${enquiries.length} total enquir${enquiries.length === 1 ? "y" : "ies"}, latest first.`}
+          title="Enquiries & Portfolio"
+          subtitle="Manage client enquiries and upload portfolio images"
         />
-        <div className="border border-border/40 bg-card/30 overflow-x-auto">
+
+        <Tabs defaultValue="enquiries" className="w-full">
+          <TabsList className="grid w-full grid-cols-2">
+            <TabsTrigger value="enquiries">Enquiries</TabsTrigger>
+            <TabsTrigger value="images">Upload Images</TabsTrigger>
+          </TabsList>
+
+          <TabsContent value="enquiries" className="mt-8">
+            <div className="border border-border/40 bg-card/30 overflow-x-auto">
           {loading ? (
             <p className="p-8 text-muted-foreground">Loading…</p>
           ) : enquiries.length === 0 ? (
@@ -130,7 +144,18 @@ const AdminEnquiries = () => {
               </TableBody>
             </Table>
           )}
-        </div>
+            </div>
+          </TabsContent>
+
+          <TabsContent value="images" className="mt-8">
+            <div className="max-w-2xl">
+              <p className="text-sm text-muted-foreground mb-6">
+                Upload images to your portfolio. They will appear on the Portfolio page organized by category.
+              </p>
+              <AdminImageUpload onUploadSuccess={handleUploadSuccess} />
+            </div>
+          </TabsContent>
+        </Tabs>
       </div>
     </div>
   );

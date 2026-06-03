@@ -1,13 +1,36 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import SectionHeader from "@/components/SectionHeader";
-import { categories } from "@/data/portfolio";
-
-const filters = ["All", ...categories.map((c) => c.name)];
+import { getCategories } from "@/data/portfolio";
 
 const Portfolio = () => {
   const [filter, setFilter] = useState("All");
+  const [categories, setCategories] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
 
+  useEffect(() => {
+    getCategories().then((cats) => {
+      setCategories(cats);
+      setLoading(false);
+    });
+  }, []);
+
+  const filters = ["All", ...categories.map((c) => c.name)];
   const visible = categories.filter((c) => filter === "All" || c.name === filter);
+
+  if (loading) {
+    return (
+      <div className="pt-32 md:pt-40 pb-24">
+        <div className="container mx-auto px-6">
+          <SectionHeader
+            eyebrow="Portfolio"
+            title="A Collection of Magizhchi Moments"
+            subtitle="Glimpses from celebrations we have designed — each one a chapter in someone's story."
+          />
+          <div className="text-center py-12 text-muted-foreground">Loading portfolio...</div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="pt-32 md:pt-40 pb-24">

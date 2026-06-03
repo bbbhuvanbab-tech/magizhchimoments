@@ -1,71 +1,49 @@
-import { supabase } from "@/integrations/supabase/client";
+import { supabase } from '../integrations/supabase/client';
 
 export interface PortfolioImage {
-  src: string;
-  alt: string;
+  url: string;
+  category: string;
+  name: string;
 }
 
-export async function fetchPortfolioImages() {
-  const { data, error } = await supabase
-    .from("portfolio_images")
-    .select("image_url, alt_text, category")
-    .order("category")
-    .order("order_index");
+const FOLDERS = ['Wedding', 'engagement', 'birthday', 'baby shower'];
 
-  if (error) {
-    console.error("Failed to fetch portfolio images:", error);
-    return {
-      weddings: [],
-      engagements: [],
-      babyShowers: [],
-      birthdays: [],
-    };
+const getPublicUrl = (folder: string, filename: string) => {
+  return `https://mwklngfmvalxwjdomtxa.supabase.co/storage/v1/object/public/portfolio-images/${folder.replace(/ /g, '%20')}/${filename.replace(/ /g, '%20')}`;
+};
+
+export const fetchPortfolioImages = async () => {
+  const results = {
+    weddings: [] as PortfolioImage[],
+    engagements: [] as PortfolioImage[],
+    babyShowers: [] as PortfolioImage[],
+    birthdays: [] as PortfolioImage[],
+  };
+
+  const folderMap: Record<string, keyof typeof results> = {
+    'Wedding': 'weddings',
+    'engagement': 'engagements',
+    'baby shower': 'babyShowers',
+    'birthday': 'birthdays',
+  };
+
+  for (const folder of FOLDERS) {
+    const { data, error } = await supabase.storage
+      .from('portfolio-images')
+      .list(folder, { limit: 10 });
+
+    if (error || !data) continue;
+
+    const images = data
+      .filter(f => f.name !== '.emptyFolderPlaceholder')
+      .map(f => ({
+        url: getPublicUrl(folder, f.name),
+        category: folder,
+        name: f.name,
+      }));
+
+    results[folderMap[folder]] = images;
   }
 
-  const images = data || [];
-  const weddings: PortfolioImage[] = [];
-  const engagements: PortfolioImage[] = [];
-  const babyShowers: PortfolioImage[] = [];
-  const birthdays: PortfolioImage[] = [];
-
-  images.forEach((img) => {
-    const item = { src: img.image_url, alt: img.alt_text || "" };
-    switch (img.category) {
-      case "wedding":
-        weddings.push(item);
-        break;
-      case "engagement":
-        engagements.push(item);
-        break;
-      case "baby_shower":
-        babyShowers.push(item);
-        break;
-      case "birthday":
-        birthdays.push(item);
-        break;
-    }
-  });
-
-  // Add fallback Cloudinary images if no wedding images
-  if (weddings.length === 0) {
-    weddings.push(
-      { src: "https://res.cloudinary.com/dipoqbdit/image/upload/v1779877108/DSCF4081_d4av7v.jpg", alt: "" },
-      { src: "https://res.cloudinary.com/dipoqbdit/image/upload/v1779877111/_SIV4748_chqu2y.jpg", alt: "" },
-      { src: "https://res.cloudinary.com/dipoqbdit/image/upload/v1779877110/IMG_20230611_001623_m2krdk.jpg", alt: "" },
-      { src: "https://res.cloudinary.com/dipoqbdit/image/upload/v1779877109/DSCF3578_iwxmbk.jpg", alt: "" },
-      { src: "https://res.cloudinary.com/dipoqbdit/image/upload/v1779876176/IMG-20240122-WA0019_eepubz.jpg", alt: "" }
-    );
-  }
-
-  return { weddings, engagements, babyShowers, birthdays };
-}
-
-export async function getCategories() {
-  const images = await fetchPortfolioImages();
-  return [
-    { name: "Weddings", slug: "weddings", items: images.weddings },
-    { name: "Engagement", slug: "engagement", items: images.engagements },
-    { name: "Baby Shower", slug: "baby-shower", items: images.babyShowers },
-    { name: "Birthday", slug: "birthday", items: images.birthdays },
-  ];
-}
+  return results;
+};

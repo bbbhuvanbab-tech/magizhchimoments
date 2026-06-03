@@ -17,7 +17,7 @@ const DatePicker = ({ value, onChange }: { value: string; onChange: (date: strin
     }
   };
 
-  const displayDate = value ? new Date(value).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "2-digit" }) : "Select date";
+  const displayDate = value ? new Date(value).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }) : "Select date";
 
   return (
     <div className="relative">

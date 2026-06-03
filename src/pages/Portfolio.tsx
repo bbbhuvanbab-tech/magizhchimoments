@@ -34,7 +34,7 @@ export default function Portfolio() {
         .map(file => ({
           name: file.name,
           category,
-          url: `https://mwklngfmvalxwjdomtxa.supabase.co/storage/v1/object/public/portfolio-images/${encodeURIComponent(category)}/${encodeURIComponent(file.name)}`
+        url: `https://mwklngfmvalxwjdomtxa.supabase.co/storage/v1/object/public/portfolio-images/${category.replace(/ /g, '%20')}/${file.name.replace(/ /g, '%20')}`
         }));
 
       allImages.push(...categoryImages);

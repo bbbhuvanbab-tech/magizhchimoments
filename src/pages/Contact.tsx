@@ -1,8 +1,91 @@
 import { useState } from "react";
-import { Mail, Phone, Instagram, MapPin } from "lucide-react";
+import { Mail, Phone, Instagram, MapPin, ChevronLeft, ChevronRight } from "lucide-react";
 import SectionHeader from "@/components/SectionHeader";
 import { toast } from "sonner";
 import { supabase, isSupabaseConfigured } from "@/integrations/supabase/client";
+
+const DatePicker = ({ value, onChange }: { value: string; onChange: (date: string) => void }) => {
+  const [open, setOpen] = useState(false);
+  const [month, setMonth] = useState(value ? new Date(value) : new Date());
+
+  const getDaysInMonth = (date: Date) => new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
+  const getFirstDayOfMonth = (date: Date) => new Date(date.getFullYear(), date.getMonth(), 1).getDay();
+
+  const days = [];
+  const firstDay = getFirstDayOfMonth(month);
+  const daysCount = getDaysInMonth(month);
+
+  for (let i = 0; i < firstDay; i++) days.push(null);
+  for (let i = 1; i <= daysCount; i++) days.push(i);
+
+  const handleSelectDay = (day: number) => {
+    const newDate = new Date(month.getFullYear(), month.getMonth(), day);
+    onChange(newDate.toISOString().split("T")[0]);
+    setOpen(false);
+  };
+
+  const monthName = month.toLocaleDateString("en-US", { month: "long", year: "numeric" });
+  const displayDate = value ? new Date(value).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }) : "Select date";
+
+  return (
+    <div className="relative">
+      <button
+        type="button"
+        onClick={() => setOpen(!open)}
+        className="w-full bg-transparent border-b border-border/60 py-3 text-foreground focus:outline-none focus:border-primary transition-smooth text-left"
+      >
+        {displayDate}
+      </button>
+      {open && (
+        <div className="absolute top-full mt-2 left-0 bg-background border border-border/40 rounded-lg p-4 shadow-lg z-50 w-72">
+          <div className="flex items-center justify-between mb-4">
+            <button
+              type="button"
+              onClick={() => setMonth(new Date(month.getFullYear(), month.getMonth() - 1))}
+              className="p-1 hover:bg-card/50 rounded transition-smooth"
+            >
+              <ChevronLeft size={18} className="text-primary" />
+            </button>
+            <span className="text-sm font-medium text-foreground">{monthName}</span>
+            <button
+              type="button"
+              onClick={() => setMonth(new Date(month.getFullYear(), month.getMonth() + 1))}
+              className="p-1 hover:bg-card/50 rounded transition-smooth"
+            >
+              <ChevronRight size={18} className="text-primary" />
+            </button>
+          </div>
+          <div className="grid grid-cols-7 gap-2 mb-2">
+            {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day) => (
+              <div key={day} className="text-center text-[10px] text-muted-foreground font-semibold uppercase tracking-wide">
+                {day}
+              </div>
+            ))}
+          </div>
+          <div className="grid grid-cols-7 gap-2">
+            {days.map((day, i) => (
+              <button
+                key={i}
+                type="button"
+                onClick={() => day && handleSelectDay(day)}
+                disabled={!day}
+                className={`h-8 text-sm rounded transition-smooth ${
+                  !day
+                    ? "text-muted-foreground/30"
+                    : value === new Date(month.getFullYear(), month.getMonth(), day).toISOString().split("T")[0]
+                    ? "bg-gradient-gold text-primary-foreground font-semibold"
+                    : "text-foreground hover:bg-card/50"
+                }`}
+              >
+                {day}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
 
 const Contact = () => {
   const [form, setForm] = useState({ name: "", phone: "", email: "", event: "", date: "", message: "" });
@@ -113,8 +196,7 @@ const Contact = () => {
               </div>
               <div>
                 <label className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground block mb-2">Event Date</label>
-                <input type="date" value={form.date} onChange={(e) => setForm({ ...form, date: e.target.value })}
-                  className="w-full bg-transparent border-b border-border/60 py-3 text-foreground focus:outline-none focus:border-primary transition-smooth" />
+                <DatePicker value={form.date} onChange={(date) => setForm({ ...form, date })} />
               </div>
             </div>
             <div>

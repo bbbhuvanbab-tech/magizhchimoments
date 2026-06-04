@@ -77,7 +77,7 @@ const Index = () => {
           title="Vows Beneath Gilded Skies"
           subtitle="Sacred ceremonies and reception experiences designed for couples who value heritage, artistry and serenity."
         />
-        <CategoryGallery images={weddings.slice(0, 4)} category="Weddings" />
+        <CategoryGallery images={weddings.slice(0, 4)} category="Wedding" />
         <div className="text-center mt-14">
           <Link to="/portfolio" className="inline-flex items-center gap-3 text-primary text-xs tracking-[0.3em] uppercase border-b border-primary/40 pb-1 hover:border-primary transition-smooth">
             Explore Weddings <ArrowRight size={14} />
@@ -94,7 +94,7 @@ const Index = () => {
           title="The Promise, Beautifully Set"
           subtitle="Intimate engagement ceremonies framed in floral artistry, candlelight and quiet elegance."
         />
-        <CategoryGallery images={engagements.slice(0, 3)} category="Engagement" />
+        <CategoryGallery images={engagements.slice(0, 3)} category="engagement" />
       </section>
 
       <div className="gold-divider" />
@@ -106,7 +106,7 @@ const Index = () => {
           title="A Tender Welcome"
           subtitle="Seemantham rituals and modern showers — soft, sentimental and styled with care for the moments that begin a family."
         />
-        <CategoryGallery images={babyShowers.slice(0, 3)} category="Baby Shower" />
+        <CategoryGallery images={babyShowers.slice(0, 3)} category="baby Shower" />
       </section>
 
       <div className="gold-divider" />
@@ -118,7 +118,7 @@ const Index = () => {
           title="Milestones, Reimagined"
           subtitle="Sophisticated birthday soirées designed with restraint, drama and a hint of midnight gold."
         />
-        <CategoryGallery images={birthdays.slice(0, 2)} category="Birthday" />
+        <CategoryGallery images={birthdays.slice(0, 2)} category="birthday" />
       </section>
 
       {/* CTA */}

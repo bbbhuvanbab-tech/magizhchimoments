@@ -95,6 +95,11 @@ const Index = () => {
           subtitle="Intimate engagement ceremonies framed in floral artistry, candlelight and quiet elegance."
         />
         <CategoryGallery images={engagements.slice(0, 3)} category="engagement" />
+        <div className="text-center mt-14">
+  <Link to="/portfolio?category=engagement" className="inline-flex items-center gap-3 text-primary text-xs tracking-[0.3em] uppercase border-b border-primary/40 pb-1 hover:border-primary transition-smooth">
+    Explore Engagements <ArrowRight size={14} />
+  </Link>
+</div>
       </section>
 
       <div className="gold-divider" />
@@ -107,6 +112,11 @@ const Index = () => {
           subtitle="Seemantham rituals and modern showers — soft, sentimental and styled with care for the moments that begin a family."
         />
         <CategoryGallery images={babyShowers.slice(0, 3)} category="baby shower" />
+        <div className="text-center mt-14">
+  <Link to="/portfolio?category=baby%20shower" className="inline-flex items-center gap-3 text-primary text-xs tracking-[0.3em] uppercase border-b border-primary/40 pb-1 hover:border-primary transition-smooth">
+    Explore Baby Showers <ArrowRight size={14} />
+  </Link>
+</div>
       </section>
 
       <div className="gold-divider" />
@@ -119,6 +129,11 @@ const Index = () => {
           subtitle="Sophisticated birthday soirées designed with restraint, drama and a hint of midnight gold."
         />
         <CategoryGallery images={birthdays.slice(0, 2)} category="birthday" />
+        <div className="text-center mt-14">
+  <Link to="/portfolio?category=birthday" className="inline-flex items-center gap-3 text-primary text-xs tracking-[0.3em] uppercase border-b border-primary/40 pb-1 hover:border-primary transition-smooth">
+    Explore Birthdays <ArrowRight size={14} />
+  </Link>
+</div>
       </section>
 
       {/* CTA */}

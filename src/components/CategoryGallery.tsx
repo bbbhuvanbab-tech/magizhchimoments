@@ -51,7 +51,7 @@ const CategoryGallery = ({ images, category, variant = "grid" }: Props) => {
           <div className="absolute inset-x-0 bottom-0 p-6 translate-y-2 group-hover:translate-y-0 transition-smooth">
             <p className="text-[10px] tracking-[0.4em] uppercase text-primary mb-2">{category}</p>
           </div>
-        </Link
+        </Link>
       ))}
     </div>
   );

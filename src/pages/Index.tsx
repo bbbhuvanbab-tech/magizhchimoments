@@ -106,7 +106,7 @@ const Index = () => {
           title="A Tender Welcome"
           subtitle="Seemantham rituals and modern showers — soft, sentimental and styled with care for the moments that begin a family."
         />
-        <CategoryGallery images={babyShowers.slice(0, 3)} category="baby Shower" />
+        <CategoryGallery images={babyShowers.slice(0, 3)} category="baby shower" />
       </section>
 
       <div className="gold-divider" />

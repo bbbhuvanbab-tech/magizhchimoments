@@ -54,8 +54,8 @@ export default function Portfolio() {
 
   return (
     <div className="min-h-screen bg-black text-white px-6 py-20">
-      <h1 className="text-center font-serif text-4xl md:text-5xl lg:text-6xl text-gradient-gold leading-tight mb-4">
-        Profile
+      <h1 className="text-center text-xs tracking-[0.4em] uppercase text-primary animate-shimmer mb-4">
+        — PROFILE —
       </h1>
       <p className="text-center text-white/50 mb-12 tracking-wider">
         A glimpse into the moments we've crafted

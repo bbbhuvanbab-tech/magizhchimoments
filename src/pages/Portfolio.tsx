@@ -57,7 +57,7 @@ export default function Portfolio() {
       <h1 className="text-center text-xs tracking-[0.4em] uppercase text-primary animate-shimmer mt-8 mb-4">
         — PROFILE —
       </h1>
-      <p className="text-center text-primary/80 font-medium mb-12 tracking-wider">
+      <p className="text-center text-primary/80 font-medium mb-12 tracking-[0.3em] uppercase text-xs">
         A glimpse into the moments we've crafted
       </p>
 

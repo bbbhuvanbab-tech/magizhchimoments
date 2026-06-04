@@ -37,7 +37,8 @@ export const fetchPortfolioImages = async () => {
     const images = data
       .filter(f => f.name !== '.emptyFolderPlaceholder')
       .map(f => ({
-        url: getPublicUrl(folder, f.name),
+        src: getPublicUrl(folder, f.name),
+        alt: f.name.replace(/\.[^/.]+$/, '').replace(/-/g, ' '),
         category: folder,
         name: f.name,
       }));

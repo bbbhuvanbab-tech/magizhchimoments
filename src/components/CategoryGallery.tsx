@@ -50,7 +50,6 @@ const CategoryGallery = ({ images, category, variant = "grid" }: Props) => {
           <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-background/20 group-hover:from-background/70 transition-smooth" />
           <div className="absolute inset-x-0 bottom-0 p-6 translate-y-2 group-hover:translate-y-0 transition-smooth">
             <p className="text-[10px] tracking-[0.4em] uppercase text-primary mb-2">{category}</p>
-            <p className="font-serif text-xl text-foreground">{img.alt}</p>
           </div>
         </Link>
       ))}

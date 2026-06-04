@@ -38,7 +38,7 @@ const CategoryGallery = ({ images, category, variant = "grid" }: Props) => {
       {images.map((img, i) => (
         <Link
           key={i}
-          to="/portfolio"
+          to={`/portfolio?category=${encodeURIComponent(category)}`}
           className="group relative overflow-hidden border border-border/40 aspect-[4/5] block hover-gold-glow transition-smooth"
         >
           <img

@@ -11,7 +11,9 @@ interface PortfolioImage {
 
 export default function Portfolio() {
   const [images, setImages] = useState<PortfolioImage[]>([]);
-  const [activeCategory, setActiveCategory] = useState('All');
+  const [activeCategory, setActiveCategory] = useState(
+  new URLSearchParams(window.location.search).get('category') || 'All'
+);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

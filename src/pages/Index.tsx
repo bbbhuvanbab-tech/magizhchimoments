@@ -80,7 +80,7 @@ const Index = () => {
         <CategoryGallery images={weddings.slice(0, 4)} category="Wedding" />
         <div className="text-center mt-14">
           <Link to="/portfolio" className="inline-flex items-center gap-3 text-primary text-xs tracking-[0.3em] uppercase border-b border-primary/40 pb-1 hover:border-primary transition-smooth">
-            Explore Weddings <ArrowRight size={14} />
+            Explore Wedding <ArrowRight size={14} />
           </Link>
         </div>
       </section>
@@ -97,7 +97,7 @@ const Index = () => {
         <CategoryGallery images={engagements.slice(0, 3)} category="engagement" />
         <div className="text-center mt-14">
   <Link to="/portfolio?category=engagement" className="inline-flex items-center gap-3 text-primary text-xs tracking-[0.3em] uppercase border-b border-primary/40 pb-1 hover:border-primary transition-smooth">
-    Explore Engagements <ArrowRight size={14} />
+    Explore Engagement <ArrowRight size={14} />
   </Link>
 </div>
       </section>
@@ -114,7 +114,7 @@ const Index = () => {
         <CategoryGallery images={babyShowers.slice(0, 3)} category="baby shower" />
         <div className="text-center mt-14">
   <Link to="/portfolio?category=baby%20shower" className="inline-flex items-center gap-3 text-primary text-xs tracking-[0.3em] uppercase border-b border-primary/40 pb-1 hover:border-primary transition-smooth">
-    Explore Baby Showers <ArrowRight size={14} />
+    Explore Baby Shower <ArrowRight size={14} />
   </Link>
 </div>
       </section>
@@ -131,7 +131,7 @@ const Index = () => {
         <CategoryGallery images={birthdays.slice(0, 2)} category="birthday" />
         <div className="text-center mt-14">
   <Link to="/portfolio?category=birthday" className="inline-flex items-center gap-3 text-primary text-xs tracking-[0.3em] uppercase border-b border-primary/40 pb-1 hover:border-primary transition-smooth">
-    Explore Birthdays <ArrowRight size={14} />
+    Explore Birthday <ArrowRight size={14} />
   </Link>
 </div>
       </section>

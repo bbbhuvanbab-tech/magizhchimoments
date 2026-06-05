@@ -130,6 +130,10 @@ function Contact() {
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!isSupabaseConfigured) {
+      toast.error("Service unavailable. Please try again later.");
+      return;
+    }
     setSubmitting(true);
     const { error } = await supabase.from("enquiries").insert({
       name: form.name,

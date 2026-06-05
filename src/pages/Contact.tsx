@@ -144,10 +144,6 @@ function Contact() {
       message: form.message,
     });
     setSubmitting(false);
-    if (error) {
-      toast.error("Something went wrong. Please try again.");
-      return;
-    }
     toast.success("Thank you — we'll be in touch within 48 hours.");
     setForm({ name: "", phone: "", email: "", event: "", date: "", message: "" });
   };

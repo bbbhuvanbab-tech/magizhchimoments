@@ -82,7 +82,7 @@ const About = () => (
           </p>
         </div>
         <div className="order-1 md:order-2 relative aspect-[3/4] overflow-hidden border border-border/40">
-          <img src={https://mwklngfmvalxwjdomtxa.supabase.co/storage/v1/object/public/portfolio-images/Wedding/wedding5.jpg} alt="Signature floral installation" loading="lazy" className="w-full h-full object-cover" />
+          <img src=src="https://mwklngfmvalxwjdomtxa.supabase.co/storage/v1/object/public/portfolio-images/Wedding/wedding5.jpg" alt="Signature floral installation" loading="lazy" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-background/20" />
         </div>
       </div>

@@ -63,7 +63,6 @@ export default function Portfolio() {
 <p className="text-center text-primary/80 mb-12 tracking-wider text-sm">
   A glimpse into the moments we've crafted
 </p>
-</p>
       {/* Category Tabs */}
       <div className="flex justify-center gap-4 mb-12 flex-wrap">
         {tabs.map(tab => (

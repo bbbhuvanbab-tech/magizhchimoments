@@ -53,7 +53,7 @@ export default function Portfolio() {
   const tabs = ['All', ...CATEGORIES];
 
   return (
-    <div className="min-h-screen bg-black text-white px-6 py-20">
+   <div className="min-h-screen bg-black text-white px-6 pt-32 pb-20">
 <p className="text-center font-serif text-4xl md:text-6xl text-gradient-gold leading-tight mb-12">
   A glimpse into the moments<br />we've crafted
 </p>

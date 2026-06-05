@@ -57,7 +57,7 @@ export default function Portfolio() {
  <p className="text-center font-serif text-2xl md:text-3xl tracking-[0.2em] uppercase text-primary mb-4">
   — OUR PROFILE —
 </p>
-<p className="text-center text-primary/80 mb-12 tracking-wider text-sm">
+<p className="text-center text-primary/60 mb-8 tracking-wider text-sm">
   A glimpse into the moments we've crafted
 </p>
       {/* Category Tabs */}

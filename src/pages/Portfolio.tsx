@@ -54,10 +54,10 @@ export default function Portfolio() {
 
   return (
     <div className="min-h-screen bg-black text-white px-6 py-20">
- <p className="text-center font-serif text-2xl md:text-3xl tracking-[0.2em] uppercase text-primary mb-4">
+ <p className="text-center text-xs tracking-[0.5em] uppercase text-primary mb-4">
   — OUR PROFILE —
 </p>
-<p className="text-center text-primary/80 mb-12 tracking-wider text-sm">
+<p className="text-center font-serif text-4xl md:text-6xl text-gradient-gold leading-tight mb-12">
   A glimpse into the moments we've crafted
 </p>
       {/* Category Tabs */}

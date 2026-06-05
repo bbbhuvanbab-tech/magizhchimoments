@@ -58,7 +58,7 @@ export default function Portfolio() {
   — OUR PROFILE —
 </p>
 <p className="text-center font-serif text-4xl md:text-6xl text-gradient-gold leading-tight mb-12">
-  A glimpse into the moments we've crafted
+  A glimpse into the moments<br />we've crafted
 </p>
       {/* Category Tabs */}
       <div className="flex justify-center gap-4 mb-12 flex-wrap">

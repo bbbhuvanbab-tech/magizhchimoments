@@ -135,18 +135,22 @@ function Contact() {
       return;
     }
     setSubmitting(true);
-    const { error } = await supabase.from("enquiries").insert({
-      name: form.name,
-      phone: form.phone || null,
-      email: form.email,
-      event_type: form.event || null,
-      event_date: form.date || null,
-      message: form.message,
-    });
-    setSubmitting(false);
-    toast.success("Thank you — we'll be in touch within 48 hours.");
-    setForm({ name: "", phone: "", email: "", event: "", date: "", message: "" });
-  };
+   // BOLT SANDBOX FIX — Revert to Supabase insert on July 1st Netlify deploy
+const saved = JSON.parse(localStorage.getItem('mm_enquiries') || '[]');
+saved.push({
+  id: Date.now(),
+  name: form.name,
+  phone: form.phone || null,
+  email: form.email,
+  event_type: form.event || null,
+  event_date: form.date || null,
+  message: form.message,
+  submitted_at: new Date().toISOString(),
+});
+localStorage.setItem('mm_enquiries', JSON.stringify(saved));
+setSubmitting(false);
+toast.success("Thank you – we'll be in touch within 48 hours.");
+setForm({ name: "", phone: "", email: "", event: "", date: "", message: "" });
 
   return (
     <div className="pt-32 md:pt-40 pb-24">

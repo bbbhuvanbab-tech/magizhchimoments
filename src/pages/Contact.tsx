@@ -129,10 +129,10 @@ function Contact() {
 
   const submit = async (e: React.FormEvent) => {
    e.preventDefault();
-    // if (!isSupabaseConfigured) {
-    //   toast.error("Service unavailable. Please try again later.");
-    //   return;
-    // }
+   if (!isSupabaseConfigured) {
+  toast.error("Service unavailable. Please try again later.");
+  return;
+}
     setSubmitting(true);
     // BOLT SANDBOX FIX — swap back to supabase.from("enquiries").insert on July 1st Netlify deploy
     const saved = JSON.parse(localStorage.getItem('mm_enquiries') || '[]');

@@ -16,7 +16,7 @@ const About = () => (
       <SectionHeader eyebrow="Our Story" title="Where Moments Become Heirlooms" />
       <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-center max-w-6xl mx-auto">
         <div className="relative aspect-[3/4] overflow-hidden border border-border/40">
-          <img src="https://mwklngfmvalxwjdomtxa.supabase.co/storage/v1/object/public/portfolio-images/Wedding/wedding4.JPG" alt="Magizhchi Moments brand story" loading="lazy" className="w-full h-full object-cover" />
+          <img src="https://mwklngfmvalxwjdomtxa.supabase.co/storage/v1/object/public/portfolio-images/Wedding/wedding5.jpg" alt="Magizhchi Moments brand story" loading="lazy" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-background/20" />
         </div>
         <div className="space-y-6 text-muted-foreground leading-relaxed text-base md:text-lg">

@@ -4,7 +4,7 @@ import { DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
 import SectionHeader from "@/components/SectionHeader";
 import { toast } from "sonner";
-// import { supabase, isSupabaseConfigured } from "@/integrations/supabase/client";
+import { supabase, isSupabaseConfigured } from "@/integrations/supabase/client";
 const DatePicker = ({ value, onChange }: { value: string; onChange: (date: string) => void }) => {
   const [open, setOpen] = useState(false);
   const selectedDate = value ? new Date(value) : undefined;
@@ -128,28 +128,7 @@ function Contact() {
   const [submitting, setSubmitting] = useState(false);
 
   const submit = async (e: React.FormEvent) => {
-   e.preventDefault();
-  // if (!isSupabaseConfigured) {
-//   toast.error("Service unavailable. Please try again later.");
-//   return;
-// }
-    setSubmitting(true);
-    // BOLT SANDBOX FIX — swap back to supabase.from("enquiries").insert on July 1st Netlify deploy
-    const saved = JSON.parse(localStorage.getItem('mm_enquiries') || '[]');
-    saved.push({
-      id: Date.now(),
-      name: form.name,
-      phone: form.phone || null,
-      email: form.email,
-      event_type: form.event || null,
-      event_date: form.date || null,
-      message: form.message,
-      submitted_at: new Date().toISOString(),
-    });
-    localStorage.setItem('mm_enquiries', JSON.stringify(saved));
-    setSubmitting(false);
-    toast.success("Thank you – we'll be in touch within 48 hours.");
-    setForm({ name: "", phone: "", email: "", event: "", date: "", message: "" }); e.preventDefault();
+    e.preventDefault();
     if (!isSupabaseConfigured) {
       toast.error("Service unavailable. Please try again later.");
       return;
@@ -164,6 +143,10 @@ function Contact() {
       message: form.message,
     });
     setSubmitting(false);
+    if (error) {
+      toast.error("Something went wrong. Please try again.");
+      return;
+    }
     toast.success("Thank you — we'll be in touch within 48 hours.");
     setForm({ name: "", phone: "", email: "", event: "", date: "", message: "" });
   };

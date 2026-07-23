@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 interface Item {
-  src: string;
+  url: string;
   alt: string;
 }
 interface Props {
@@ -15,7 +15,7 @@ const CategoryGallery = ({ images, category, variant = "grid" }: Props) => {
     return (
       <div className="group relative overflow-hidden border border-border/40">
         <img
-          src={images[0].src}
+          src={images[0].url}
           alt={images[0].alt}
           loading="lazy"
           className="w-full h-[60vh] md:h-[75vh] object-cover transition-smooth group-hover:scale-105"
@@ -42,7 +42,7 @@ const CategoryGallery = ({ images, category, variant = "grid" }: Props) => {
           className="group relative overflow-hidden border border-border/40 aspect-[4/5] block hover-gold-glow transition-smooth"
         >
           <img
-            src={img.src}
+            src={img.url}
             alt={img.alt}
             loading="lazy"
             className="absolute inset-0 w-full h-full object-cover transition-smooth duration-700 group-hover:scale-110"

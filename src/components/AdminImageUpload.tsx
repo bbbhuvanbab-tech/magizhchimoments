@@ -58,6 +58,7 @@ export function AdminImageUpload({ onUploadSuccess }: { onUploadSuccess?: () => 
         image_url: publicUrl.publicUrl,
         alt_text: altText,
         order_index: 0,
+        created_by: (await supabase.auth.getUser()).data.user?.id,
       });
 
       if (dbError) throw dbError;

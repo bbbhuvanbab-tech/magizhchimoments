@@ -1,65 +1,35 @@
 import { useEffect, useState } from 'react';
-import { supabase } from '../integrations/supabase/client';
+import { fetchAllPortfolioImages } from '../data/portfolio';
+import type { PortfolioImage } from '../data/portfolio';
 
-const CATEGORIES = ['Wedding', 'engagement', 'birthday', 'baby shower'];
-
-interface PortfolioImage {
-  name: string;
-  url: string;
-  category: string;
-}
+const CATEGORIES = ['All', 'Wedding', 'engagement', 'birthday', 'baby shower'];
 
 export default function Portfolio() {
   const [images, setImages] = useState<PortfolioImage[]>([]);
   const [activeCategory, setActiveCategory] = useState(
-  new URLSearchParams(window.location.search).get('category') || 'All'
-);
+    new URLSearchParams(window.location.search).get('category') || 'All'
+  );
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetchAllImages();
+    fetchAllPortfolioImages().then((data) => {
+      setImages(data);
+      setLoading(false);
+    });
   }, []);
-
-  const fetchAllImages = async () => {
-    setLoading(true);
-    const allImages: PortfolioImage[] = [];
-
-    for (const category of CATEGORIES) {
-      const { data, error } = await supabase.storage
-        .from('portfolio-images')
-        .list(category, { limit: 100 });
-
-      if (error || !data) continue;
-
-      const categoryImages = data
-        .filter(file => file.name !== '.emptyFolderPlaceholder')
-        .map(file => ({
-          name: file.name,
-          category,
-        url: `https://mwklngfmvalxwjdomtxa.supabase.co/storage/v1/object/public/portfolio-images/${category.replace(/ /g, '%20')}/${file.name.replace(/ /g, '%20')}`
-        }));
-
-      allImages.push(...categoryImages);
-    }
-
-    setImages(allImages);
-    setLoading(false);
-  };
 
   const filtered = activeCategory === 'All'
     ? images
     : images.filter(img => img.category === activeCategory);
 
-  const tabs = ['All', ...CATEGORIES];
-
   return (
-   <div className="min-h-screen bg-black text-white px-6 pt-32 pb-20">
-<p className="text-center font-serif text-4xl md:text-6xl text-gradient-gold leading-tight mb-12">
-  A glimpse into the moments<br />we've crafted
-</p>
-      {/* Category Tabs */}
+    <div className="min-h-screen bg-black text-white px-6 pt-32 pb-20">
+      <p className="text-center font-serif text-4xl md:text-6xl text-gradient-gold leading-tight mb-12">
+        A glimpse into the moments<br />we've crafted
+      </p>
+
       <div className="flex justify-center gap-4 mb-12 flex-wrap">
-        {tabs.map(tab => (
+        {CATEGORIES.map(tab => (
           <button
             key={tab}
             onClick={() => setActiveCategory(tab)}
@@ -74,7 +44,6 @@ export default function Portfolio() {
         ))}
       </div>
 
-      {/* Grid */}
       {loading ? (
         <div className="text-center text-white/40 tracking-widest">Loading...</div>
       ) : filtered.length === 0 ? (
@@ -85,7 +54,7 @@ export default function Portfolio() {
             <div key={i} className="overflow-hidden aspect-square group">
               <img
                 src={img.url}
-                alt={img.name}
+                alt={img.alt || img.name}
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
             </div>

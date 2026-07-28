@@ -1,0 +1,97 @@
+{
+  "version": 1,
+  "sdk_version": "0.25.0",
+  "path": "/mcp",
+  "auth": {
+    "type": "oauth",
+    "issuer": "https://jwnvpqwcjffazvibvsak.supabase.co/auth/v1",
+    "accepted_audiences": [
+      "authenticated"
+    ]
+  },
+  "mcp": {
+    "server": {
+      "name": "magizhchi-moments-mcp",
+      "version": "0.1.0",
+      "title": "Magizhchi Moments"
+    },
+    "tools": [
+      {
+        "name": "list_enquiries",
+        "title": "List enquiries",
+        "description": "List client enquiries submitted through the Magizhchi Moments contact form, newest first. Requires an admin account.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "limit": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "description": "Maximum number of enquiries to return (default 20)."
+            },
+            "status": {
+              "type": "string",
+              "description": "Filter by enquiry status, e.g. 'New'."
+            }
+          },
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "enquiry_summary",
+        "title": "Enquiry summary",
+        "description": "Summarise all enquiries by status and event type, with the date of the most recent enquiry. Requires an admin account.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "update_enquiry_status",
+        "title": "Update enquiry status",
+        "description": "Update the status of a single enquiry, for example to 'New', 'Contacted', 'Booked', or 'Closed'. Requires an admin account.",
+        "annotations": {
+          "readOnlyHint": false,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "The enquiry id."
+            },
+            "status": {
+              "type": "string",
+              "minLength": 1,
+              "description": "The new status value."
+            }
+          },
+          "required": [
+            "id",
+            "status"
+          ],
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        },
+        "outputSchema": null
+      }
+    ]
+  }
+}

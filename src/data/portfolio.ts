@@ -18,10 +18,6 @@ import engagement1 from '../assets/engagement-1.jpg';
 import engagement2 from '../assets/engagement-2.jpg';
 import engagement3 from '../assets/engagement-3.jpg';
 import engagement4 from '../assets/engagement-4.jpg';
-import engagement5 from '../assets/engagement-5.jpg';
-import engagement6 from '../assets/engagement-6.jpg';
-import engagement7 from '../assets/engagement-7.jpg';
-import engagement8 from '../assets/engagement-8.jpg';
 import engagement9 from '../assets/engagement-9.jpg';
 import engagement10 from '../assets/engagement-10.jpg';
 import engagement11 from '../assets/engagement-11.jpg';
@@ -30,13 +26,6 @@ import engagement13 from '../assets/engagement-13.jpg';
 import engagement14 from '../assets/engagement-14.jpg';
 import engagement15 from '../assets/engagement-15.jpg';
 
-import birthday1 from '../assets/birthday-1.jpg';
-import birthday2 from '../assets/birthday-2.jpg';
-import birthday3 from '../assets/birthday-3.jpg';
-import birthday4 from '../assets/birthday-4.jpg';
-import birthday5 from '../assets/birthday-5.jpg';
-import birthday6 from '../assets/birthday-6.jpg';
-import birthday7 from '../assets/birthday-7.jpg';
 import birthday8 from '../assets/birthday-8.jpg';
 import birthday9 from '../assets/birthday-9.jpg';
 import birthday10 from '../assets/birthday-10.jpg';
@@ -47,10 +36,6 @@ import birthday14 from '../assets/birthday-14.jpg';
 import birthday15 from '../assets/birthday-15.jpg';
 import birthday16 from '../assets/birthday-16.jpg';
 
-import baby1 from '../assets/baby-1.jpg';
-import baby2 from '../assets/baby-2.jpg';
-import baby3 from '../assets/baby-3.jpg';
-import baby4 from '../assets/baby-4.jpg';
 import baby5 from '../assets/baby-5.jpg';
 import baby6 from '../assets/baby-6.jpg';
 
@@ -65,10 +50,6 @@ const assetMap: Record<string, string> = {
   'engagement-2.jpg': engagement2,
   'engagement-3.jpg': engagement3,
   'engagement-4.jpg': engagement4,
-  'engagement-5.jpg': engagement5,
-  'engagement-6.jpg': engagement6,
-  'engagement-7.jpg': engagement7,
-  'engagement-8.jpg': engagement8,
   'engagement-9.jpg': engagement9,
   'engagement-10.jpg': engagement10,
   'engagement-11.jpg': engagement11,
@@ -76,13 +57,6 @@ const assetMap: Record<string, string> = {
   'engagement-13.jpg': engagement13,
   'engagement-14.jpg': engagement14,
   'engagement-15.jpg': engagement15,
-  'birthday-1.jpg': birthday1,
-  'birthday-2.jpg': birthday2,
-  'birthday-3.jpg': birthday3,
-  'birthday-4.jpg': birthday4,
-  'birthday-5.jpg': birthday5,
-  'birthday-6.jpg': birthday6,
-  'birthday-7.jpg': birthday7,
   'birthday-8.jpg': birthday8,
   'birthday-9.jpg': birthday9,
   'birthday-10.jpg': birthday10,
@@ -92,10 +66,6 @@ const assetMap: Record<string, string> = {
   'birthday-14.jpg': birthday14,
   'birthday-15.jpg': birthday15,
   'birthday-16.jpg': birthday16,
-  'baby-1.jpg': baby1,
-  'baby-2.jpg': baby2,
-  'baby-3.jpg': baby3,
-  'baby-4.jpg': baby4,
   'baby-5.jpg': baby5,
   'baby-6.jpg': baby6,
 };

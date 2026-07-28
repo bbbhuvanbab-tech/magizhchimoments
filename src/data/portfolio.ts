@@ -76,17 +76,16 @@ const localFallback = {
     wedding14, wedding15, wedding16,
   ].map((src, i) => ({ url: src, alt: `Wedding ${i + 1}`, category: 'Wedding', name: `wedding-${i + 1}` })),
   engagements: [
-    engagement1, engagement2, engagement3, engagement4, engagement5,
-    engagement6, engagement7, engagement8, engagement9, engagement10,
+    engagement1, engagement2, engagement3, engagement4,
+    engagement9, engagement10,
     engagement11, engagement12, engagement13, engagement14, engagement15,
   ].map((src, i) => ({ url: src, alt: `Engagement ${i + 1}`, category: 'engagement', name: `engagement-${i + 1}` })),
   birthdays: [
-    birthday1, birthday2, birthday3, birthday4, birthday5, birthday6,
-    birthday7, birthday8, birthday9, birthday10, birthday11, birthday12,
+    birthday8, birthday9, birthday10, birthday11, birthday12,
     birthday13, birthday14, birthday15, birthday16,
   ].map((src, i) => ({ url: src, alt: `Birthday ${i + 1}`, category: 'birthday', name: `birthday-${i + 1}` })),
   babyShowers: [
-    baby1, baby2, baby3, baby4, baby5, baby6,
+    baby5, baby6,
   ].map((src, i) => ({ url: src, alt: `Baby Shower ${i + 1}`, category: 'baby shower', name: `baby-${i + 1}` })),
 };
 

@@ -10,15 +10,6 @@ export interface PortfolioImage {
 import wedding1 from '../assets/wedding-1.jpg';
 import wedding2 from '../assets/wedding-2.jpg';
 import wedding3 from '../assets/wedding-3.jpg';
-import wedding4 from '../assets/wedding-4.jpg';
-import wedding5 from '../assets/wedding-5.jpg';
-import wedding6 from '../assets/wedding-6.jpg';
-import wedding7 from '../assets/wedding-7.jpg';
-import wedding8 from '../assets/wedding-8.jpg';
-import wedding9 from '../assets/wedding-9.jpg';
-import wedding11 from '../assets/wedding-11.jpg';
-import wedding12 from '../assets/wedding-12.jpg';
-import wedding13 from '../assets/wedding-13.jpg';
 import wedding14 from '../assets/wedding-14.jpg';
 import wedding15 from '../assets/wedding-15.jpg';
 import wedding16 from '../assets/wedding-16.jpg';
@@ -67,15 +58,6 @@ const assetMap: Record<string, string> = {
   'wedding-1.jpg': wedding1,
   'wedding-2.jpg': wedding2,
   'wedding-3.jpg': wedding3,
-  'wedding-4.jpg': wedding4,
-  'wedding-5.jpg': wedding5,
-  'wedding-6.jpg': wedding6,
-  'wedding-7.jpg': wedding7,
-  'wedding-8.jpg': wedding8,
-  'wedding-9.jpg': wedding9,
-  'wedding-11.jpg': wedding11,
-  'wedding-12.jpg': wedding12,
-  'wedding-13.jpg': wedding13,
   'wedding-14.jpg': wedding14,
   'wedding-15.jpg': wedding15,
   'wedding-16.jpg': wedding16,
@@ -120,8 +102,7 @@ const assetMap: Record<string, string> = {
 
 const localFallback = {
   weddings: [
-    wedding1, wedding2, wedding3, wedding4, wedding5, wedding6,
-    wedding7, wedding8, wedding9, wedding11, wedding12, wedding13,
+    wedding1, wedding2, wedding3,
     wedding14, wedding15, wedding16,
   ].map((src, i) => ({ url: src, alt: `Wedding ${i + 1}`, category: 'Wedding', name: `wedding-${i + 1}` })),
   engagements: [

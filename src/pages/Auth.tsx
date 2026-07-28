@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { supabase, isSupabaseConfigured } from "@/integrations/supabase/client";
 import { lovable } from "@/integrations/lovable";
 import SectionHeader from "@/components/SectionHeader";
@@ -7,6 +7,10 @@ import { toast } from "sonner";
 
 const Auth = () => {
   const navigate = useNavigate();
+  const [params] = useSearchParams();
+  const rawNext = params.get("next");
+  const next = rawNext && rawNext.startsWith("/") && !rawNext.startsWith("//") ? rawNext : null;
+  const destination = next ?? "/admin/enquiries";
   const [mode, setMode] = useState<"signin" | "signup">("signin");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -15,9 +19,9 @@ const Auth = () => {
   useEffect(() => {
     if (!isSupabaseConfigured) return;
     supabase.auth.getSession().then(({ data: { session } }) => {
-      if (session) navigate("/admin/enquiries", { replace: true });
+      if (session) navigate(destination, { replace: true });
     });
-  }, [navigate]);
+  }, [navigate, destination]);
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -32,17 +36,17 @@ const Auth = () => {
         : await supabase.auth.signUp({
             email,
             password,
-            options: { emailRedirectTo: `${window.location.origin}/admin/enquiries` },
+            options: { emailRedirectTo: `${window.location.origin}${destination}` },
           });
     setSubmitting(false);
     if (error) return toast.error(error.message);
     toast.success(mode === "signin" ? "Welcome back." : "Account created.");
-    navigate("/admin/enquiries", { replace: true });
+    navigate(destination, { replace: true });
   };
 
   const google = async () => {
     const result = await lovable.auth.signInWithOAuth("google", {
-      redirect_uri: `${window.location.origin}/admin/enquiries`,
+      redirect_uri: `${window.location.origin}${destination}`,
     });
     if (result.error) toast.error("Google sign-in failed.");
   };

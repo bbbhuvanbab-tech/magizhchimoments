@@ -159,13 +159,13 @@ export const fetchPortfolioImages = async () => {
     birthdays: [] as PortfolioImage[],
   };
 
-  const { data, error } = await supabase
+  const { data, error } = await (supabase as any)
     .from('portfolio_images')
     .select('category, image_url, alt_text')
     .order('order_index', { ascending: true });
 
   if (!error && data && data.length > 0) {
-    for (const row of data) {
+    for (const row of data as { category: string; image_url: string; alt_text: string | null }[]) {
       const key = CATEGORY_MAP[row.category];
       if (!key) continue;
       results[key].push({

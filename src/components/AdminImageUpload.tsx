@@ -53,7 +53,7 @@ export function AdminImageUpload({ onUploadSuccess }: { onUploadSuccess?: () => 
         .from("portfolio")
         .getPublicUrl(filename);
 
-      const { error: dbError } = await supabase.from("portfolio_images").insert({
+      const { error: dbError } = await (supabase as any).from("portfolio_images").insert({
         category,
         image_url: publicUrl.publicUrl,
         alt_text: altText,

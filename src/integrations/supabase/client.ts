@@ -1,5 +1,6 @@
 import { createClient } from '@supabase/supabase-js';
 import type { Database } from './types';
+import { brokeredPreviewStorage } from './previewAuthStorage';
 
 export const isSupabaseConfigured = true;
 
@@ -8,7 +9,7 @@ export const supabase = createClient<Database>(
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im13a2xuZ2ZtdmFseHdqZG9tdHhhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkyNjA0MzIsImV4cCI6MjA5NDgzNjQzMn0.fbMoc3KGcDrbQ5hvH5EwwVv0VZR3foduVhy7I-IPxgQ',
   {
     auth: {
-      storage: localStorage,
+      storage: brokeredPreviewStorage(),
       persistSession: true,
       autoRefreshToken: true,
     }

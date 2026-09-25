@@ -50,11 +50,13 @@ export default function Portfolio() {
         <div className="text-center text-white/40 tracking-widest">No images yet</div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 max-w-6xl mx-auto">
-          {filtered.map((img, i) => (
-            <div key={i} className="overflow-hidden aspect-square group">
+          {filtered.map((img) => (
+            <div key={img.url} className="overflow-hidden aspect-square group bg-white/5">
               <img
                 src={img.url}
                 alt={img.alt || img.name}
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
             </div>

@@ -49,13 +49,16 @@ export default function Portfolio() {
       ) : filtered.length === 0 ? (
         <div className="text-center text-white/40 tracking-widest">No images yet</div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 max-w-6xl mx-auto">
-          {filtered.map((img) => (
-            <div key={img.url} className="overflow-hidden aspect-square group bg-white/5">
+        <div
+          key={activeCategory}
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 max-w-6xl mx-auto"
+        >
+          {filtered.map((img, index) => (
+            <div key={`${img.category}-${img.name}-${index}`} className="overflow-hidden aspect-square group bg-white/5">
               <img
                 src={img.url}
                 alt={img.alt || img.name}
-                loading="lazy"
+                loading={index < 3 ? 'eager' : 'lazy'}
                 decoding="async"
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />

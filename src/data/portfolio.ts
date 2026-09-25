@@ -1,5 +1,3 @@
-import { supabase } from '../integrations/supabase/client';
-
 export interface PortfolioImage {
   url: string;
   alt: string;
@@ -89,51 +87,8 @@ const localFallback = {
   ].map((src, i) => ({ url: src, alt: `Baby Shower ${i + 1}`, category: 'baby shower', name: `baby-${i + 1}` })),
 };
 
-const CATEGORY_MAP: Record<string, keyof typeof localFallback> = {
-  'wedding': 'weddings',
-  'engagement': 'engagements',
-  'birthday': 'birthdays',
-  'baby_shower': 'babyShowers',
-};
-
-function resolveImageUrl(imageUrl: string): string {
-  if (assetMap[imageUrl]) return assetMap[imageUrl];
-  return imageUrl;
-}
-
 export const fetchPortfolioImages = async () => {
-  const results = {
-    weddings: [] as PortfolioImage[],
-    engagements: [] as PortfolioImage[],
-    babyShowers: [] as PortfolioImage[],
-    birthdays: [] as PortfolioImage[],
-  };
-
-  const { data, error } = await (supabase as any)
-    .from('portfolio_images')
-    .select('category, image_url, alt_text')
-    .order('order_index', { ascending: true });
-
-  if (!error && data && data.length > 0) {
-    for (const row of data as { category: string; image_url: string; alt_text: string | null }[]) {
-      const key = CATEGORY_MAP[row.category];
-      if (!key) continue;
-      results[key].push({
-        url: resolveImageUrl(row.image_url),
-        alt: row.alt_text || row.category,
-        category: row.category,
-        name: row.alt_text || row.category,
-      });
-    }
-  }
-
-  for (const key of Object.keys(results) as (keyof typeof results)[]) {
-    if (results[key].length === 0) {
-      results[key] = localFallback[key] as PortfolioImage[];
-    }
-  }
-
-  return results;
+  return localFallback;
 };
 
 export const fetchAllPortfolioImages = async (): Promise<PortfolioImage[]> => {

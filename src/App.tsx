@@ -11,6 +11,7 @@ import Contact from "./pages/Contact.tsx";
 import AdminEnquiries from "./pages/AdminEnquiries.tsx";
 import Auth from "./pages/Auth.tsx";
 import OAuthConsent from "./pages/OAuthConsent.tsx";
+import Services from "./pages/Services.tsx";
 import Layout from "./components/Layout.tsx";
 
 const queryClient = new QueryClient();
@@ -24,6 +25,7 @@ const App = () => (
         <Routes>
           <Route element={<Layout />}>
             <Route path="/" element={<Index />} />
+            <Route path="/services" element={<Services />} />
             <Route path="/about" element={<About />} />
             <Route path="/portfolio" element={<Portfolio />} />
             <Route path="/contact" element={<Contact />} />

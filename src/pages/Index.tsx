@@ -142,7 +142,7 @@ const Index = () => {
               <Link to="/contact">Plan Your Event</Link>
             </Button>
             <Button asChild variant="outline" className="h-12 rounded-none border-primary/60 bg-transparent px-8 text-xs tracking-[0.3em] uppercase text-primary hover:bg-primary hover:text-primary-foreground">
-              <Link to="/#services">Explore Our Services</Link>
+              <Link to="/services">Explore Our Services</Link>
             </Button>
           </div>
         </div>

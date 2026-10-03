@@ -1,3 +1,3 @@
 # Project Architecture
 
-- Homepage Services and Events navigation uses anchored sections on `/`; `Layout` owns hash scrolling so links work from every route.
+- Events navigation uses the anchored homepage section through `Layout` hash scrolling; Services uses the dedicated `/services` route for its full offering.

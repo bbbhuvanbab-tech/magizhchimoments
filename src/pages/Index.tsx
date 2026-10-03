@@ -88,17 +88,17 @@ const Index = () => {
             — Premium Event Planning & Management —
           </p>
           <h1 className="font-serif text-4xl sm:text-5xl md:text-7xl text-gradient-gold leading-[1.05] max-w-5xl animate-fade-up opacity-0 text-center font-extrabold" style={{ animationDelay: "0.4s" }}>
-            Extraordinary Events,<br />Seamlessly Managed.
+            Complete Celebrations. Thoughtfully Planned. Beautifully Executed.
           </h1>
           <p className="text-base mt-8 max-w-xl leading-relaxed animate-fade-up opacity-0 md:text-xl text-secondary-foreground" style={{ animationDelay: "0.7s" }}>
-            From the first idea to the final guest farewell, we plan, design and manage meaningful celebrations with intention, precision and quiet luxury.
+            From the first idea to the final farewell, Magizhchi Moments brings together every element of your celebration under one trusted team.
           </p>
           <div className="mt-10 flex flex-col sm:flex-row gap-4 animate-fade-up opacity-0" style={{ animationDelay: "1s" }}>
             <Button asChild className="h-12 rounded-none px-8 text-xs tracking-[0.3em] uppercase hover-gold-glow">
               <Link to="/contact">Plan Your Event</Link>
             </Button>
             <Button asChild variant="outline" className="h-12 rounded-none border-primary/60 bg-transparent px-8 text-xs tracking-[0.3em] uppercase text-primary hover:bg-primary hover:text-primary-foreground">
-              <Link to="/portfolio">View Our Work</Link>
+              <Link to="/#services">Explore Our Services</Link>
             </Button>
           </div>
         </div>

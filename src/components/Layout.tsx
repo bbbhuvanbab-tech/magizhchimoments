@@ -4,10 +4,16 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 
 const Layout = () => {
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
   useEffect(() => {
+    if (hash) {
+      window.requestAnimationFrame(() => {
+        document.getElementById(hash.slice(1))?.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+      return;
+    }
     window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
-  }, [pathname]);
+  }, [pathname, hash]);
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground">
       <Navbar />

@@ -9,7 +9,7 @@ const Footer = () => (
         <div className="flex flex-col items-center md:items-start">
           <Logo showTagline />
           <p className="text-sm text-muted-foreground mt-6 max-w-xs leading-relaxed">
-            Crafting timeless celebrations with quiet luxury, refined design and effortless storytelling.
+            Planning and managing meaningful celebrations with quiet luxury, considered design and effortless hospitality.
           </p>
         </div>
         <div>

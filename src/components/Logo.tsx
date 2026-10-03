@@ -19,7 +19,7 @@ const Logo = ({ className = "", showTagline = false }: LogoProps) => (
     </span>
     {showTagline && (
       <span className="text-[10px] tracking-[0.3em] text-muted-foreground mt-2 uppercase">
-        Luxury Event Atelier
+        Premium Event Planning
       </span>
     )}
   </Link>

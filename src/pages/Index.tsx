@@ -82,12 +82,12 @@ const Index = () => {
           width={1920}
           height={1080}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/40 to-background" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/65 to-background" />
         <div className="relative z-10 container mx-auto h-full flex flex-col items-center justify-center text-center px-6 opacity-100 shadow-none border-none border-primary">
           <p className="text-xs md:text-sm tracking-[0.5em] uppercase text-primary mb-6 animate-fade-in opacity-0" style={{ animationDelay: "0.2s" }}>
             — Premium Event Planning & Management —
           </p>
-          <h1 className="font-serif text-5xl md:text-7xl text-gradient-gold leading-[1.05] max-w-5xl animate-fade-up opacity-0 text-center font-extrabold" style={{ animationDelay: "0.4s" }}>
+          <h1 className="font-serif text-4xl sm:text-5xl md:text-7xl text-gradient-gold leading-[1.05] max-w-5xl animate-fade-up opacity-0 text-center font-extrabold" style={{ animationDelay: "0.4s" }}>
             Extraordinary Events,<br />Seamlessly Managed.
           </h1>
           <p className="text-base mt-8 max-w-xl leading-relaxed animate-fade-up opacity-0 md:text-xl text-secondary-foreground" style={{ animationDelay: "0.7s" }}>

@@ -1,5 +1,19 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, CalendarCheck, ClipboardCheck, MapPin, Palette, Sparkles, Users } from "lucide-react";
+import {
+  ArrowRight,
+  Brush,
+  CalendarCheck,
+  Camera,
+  CircleDot,
+  Disc3,
+  Drama,
+  Flame,
+  Flower2,
+  Lightbulb,
+  Music2,
+  PartyPopper,
+  UtensilsCrossed,
+} from "lucide-react";
 import { useEffect, useState } from "react";
 import hero from "@/assets/hero.jpg";
 import SectionHeader from "@/components/SectionHeader";
@@ -11,33 +25,63 @@ import type { PortfolioImage } from "@/data/portfolio";
 const services = [
   {
     icon: CalendarCheck,
-    title: "Event Planning",
-    description: "From the first conversation to the final farewell, we shape every detail around your vision, priorities and budget.",
+    title: "Event Planning & Coordination",
+    description: "Every detail, timeline and team thoughtfully managed from start to finish.",
   },
   {
-    icon: Palette,
-    title: "Creative Direction & Design",
-    description: "A cohesive visual story across invitations, décor, florals, lighting, styling and every guest-facing detail.",
+    icon: Flower2,
+    title: "Decoration & Floral Design",
+    description: "Refined settings and floral stories created around your celebration.",
   },
   {
-    icon: MapPin,
-    title: "Venue & Vendor Curation",
-    description: "The right setting and trusted creative partners, thoughtfully selected and coordinated as one team.",
+    icon: Camera,
+    title: "Photography & Videography",
+    description: "Timeless imagery and films that preserve every meaningful moment.",
   },
   {
-    icon: Users,
-    title: "Guest Experience",
-    description: "Considered hospitality, seamless arrivals and personal touches that make every guest feel beautifully cared for.",
+    icon: UtensilsCrossed,
+    title: "Catering & Hospitality",
+    description: "Considered menus and gracious service for a memorable guest experience.",
   },
   {
-    icon: Sparkles,
-    title: "Production & Styling",
-    description: "Precise production, immersive ambience and elevated styling brought together with quiet confidence.",
+    icon: PartyPopper,
+    title: "Special Entries & Effects",
+    description: "Striking entrances and elegant effects, produced with precision.",
   },
   {
-    icon: ClipboardCheck,
-    title: "On-Day Management",
-    description: "Timelines, teams and transitions managed discreetly, so you can be fully present for your celebration.",
+    icon: Music2,
+    title: "Nadaswaram & Thavil",
+    description: "Soulful traditional music to honour the spirit of every ceremony.",
+  },
+  {
+    icon: CircleDot,
+    title: "Chenda Melam",
+    description: "A powerful ceremonial ensemble that brings energy and grandeur.",
+  },
+  {
+    icon: Disc3,
+    title: "DJ, Sound & Entertainment",
+    description: "Curated music, artists and sound for celebrations that come alive.",
+  },
+  {
+    icon: Flame,
+    title: "Purohithar & Ritual Services",
+    description: "Trusted guidance for meaningful traditions and sacred ceremonies.",
+  },
+  {
+    icon: Brush,
+    title: "Bridal Makeup & Styling",
+    description: "Polished bridal beauty and styling, tailored to your personal vision.",
+  },
+  {
+    icon: Drama,
+    title: "Garlands & Traditional Arrangements",
+    description: "Fresh garlands and ceremonial details arranged with exceptional care.",
+  },
+  {
+    icon: Lightbulb,
+    title: "Lighting & LED Production",
+    description: "Layered lighting and seamless production that transform every setting.",
   },
 ];
 
@@ -111,19 +155,21 @@ const Index = () => {
       <section id="services" className="scroll-mt-24 border-b border-border/40 bg-card/30 py-24 md:py-32">
         <div className="container mx-auto px-6">
           <SectionHeader
-            eyebrow="What We Do"
-            title="Every Detail, Considered"
-            subtitle="A complete planning and management service for celebrations that feel effortless, personal and unmistakably yours."
+            eyebrow="Our Services"
+            title="Everything Your Celebration Needs"
+            subtitle="From planning and decor to entertainment, food and traditions — we bring every part of your celebration together."
           />
-          <div className="grid gap-x-12 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-px border border-border/60 bg-border/60 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {services.map(({ icon: Icon, title, description }, index) => (
-              <article key={title} className="border-t border-border/60 pt-7">
-                <div className="mb-5 flex items-center justify-between">
-                  <Icon className="h-5 w-5 text-primary" aria-hidden="true" />
-                  <span className="text-xs text-muted-foreground">0{index + 1}</span>
+              <article key={title} className="group min-h-[250px] bg-background p-7 transition-smooth hover:bg-secondary/70 md:p-8">
+                <div className="mb-10 flex items-start justify-between">
+                  <div className="flex h-11 w-11 items-center justify-center border border-primary/40 text-primary transition-smooth group-hover:border-primary group-hover:bg-primary group-hover:text-primary-foreground">
+                    <Icon className="h-5 w-5" strokeWidth={1.4} aria-hidden="true" />
+                  </div>
+                  <span className="text-[10px] tracking-[0.2em] text-muted-foreground">{String(index + 1).padStart(2, "0")}</span>
                 </div>
-                <h3 className="font-serif text-2xl text-foreground">{title}</h3>
-                <p className="mt-4 text-sm leading-7 text-muted-foreground">{description}</p>
+                <h3 className="font-serif text-2xl leading-tight text-foreground">{title}</h3>
+                <p className="mt-4 text-sm leading-6 text-muted-foreground">{description}</p>
               </article>
             ))}
           </div>

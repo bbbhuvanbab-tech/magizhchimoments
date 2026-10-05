@@ -54,7 +54,7 @@ interface EventDetailProps {
 }
 
 const EventDetail = ({ eyebrow, title, description, services, images = [], category, index, showCta = false }: EventDetailProps) => (
-  <section id={eyebrow.toLowerCase().replaceAll(" & ", "-").replaceAll(" ", "-")} className={`scroll-mt-28 border-t border-border/50 py-24 md:scroll-mt-32 md:py-32 ${index % 2 === 1 ? "bg-card/25" : ""}`}>
+  <section id={eyebrow.toLowerCase().replace(/ & | /g, "-")} className={`scroll-mt-28 border-t border-border/50 py-24 md:scroll-mt-32 md:py-32 ${index % 2 === 1 ? "bg-card/25" : ""}`}>
     <div className="container mx-auto px-6">
       <div className="max-w-3xl">
           <p className="text-xs uppercase tracking-[0.4em] text-primary">— {eyebrow} —</p>

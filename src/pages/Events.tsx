@@ -50,39 +50,43 @@ interface EventDetailProps {
   images?: PortfolioImage[];
   category?: string;
   index: number;
+  showCta?: boolean;
 }
 
-const EventDetail = ({ eyebrow, title, description, services, images = [], category, index }: EventDetailProps) => (
-  <section className={`border-t border-border/50 py-24 md:py-32 ${index % 2 === 1 ? "bg-card/25" : ""}`}>
+const EventDetail = ({ eyebrow, title, description, services, images = [], category, index, showCta = false }: EventDetailProps) => (
+  <section id={eyebrow.toLowerCase().replaceAll(" & ", "-").replaceAll(" ", "-")} className={`scroll-mt-28 border-t border-border/50 py-24 md:scroll-mt-32 md:py-32 ${index % 2 === 1 ? "bg-card/25" : ""}`}>
     <div className="container mx-auto px-6">
-      <div className="grid gap-14 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
-        <div>
+      <div className="max-w-3xl">
           <p className="text-xs uppercase tracking-[0.4em] text-primary">— {eyebrow} —</p>
           <h2 className="mt-6 font-serif text-4xl leading-tight text-gradient-gold md:text-6xl">{title}</h2>
           <p className="mt-7 max-w-xl text-base leading-8 text-muted-foreground">{description}</p>
-          <Button asChild variant="outline" className="mt-9 h-11 rounded-none border-primary/60 bg-transparent px-6 text-xs uppercase tracking-[0.25em] text-primary hover:bg-primary hover:text-primary-foreground">
-            <Link to="/contact">Plan Your Event <ArrowRight /></Link>
-          </Button>
-        </div>
-        <div>
-          <p className="mb-4 text-xs uppercase tracking-[0.3em] text-primary">What We Can Coordinate</p>
-          <ul className="grid sm:grid-cols-2">
-            {services.map((service) => (
-              <li key={service} className="flex items-center gap-4 border-b border-border/50 py-3.5 pr-5 text-sm text-foreground/85">
-                <span className="h-1 w-1 shrink-0 bg-primary" aria-hidden="true" />
-                {service}
-              </li>
-            ))}
-          </ul>
-        </div>
+          {showCta && (
+            <Button asChild variant="outline" className="mt-9 h-11 rounded-none border-primary/60 bg-transparent px-6 text-xs uppercase tracking-[0.25em] text-primary hover:bg-primary hover:text-primary-foreground">
+              <Link to="/contact">Plan Your Event <ArrowRight /></Link>
+            </Button>
+          )}
+      </div>
+      <div className="mt-14 border-t border-border/60 pt-8">
+        <p className="mb-4 text-xs uppercase tracking-[0.3em] text-primary">What We Can Coordinate</p>
+        <ul className="grid sm:grid-cols-2 lg:grid-cols-3">
+          {services.map((service) => (
+            <li key={service} className="flex items-center gap-4 border-b border-border/50 py-3.5 pr-5 text-sm text-foreground/85">
+              <span className="h-1 w-1 shrink-0 bg-primary" aria-hidden="true" />
+              {service}
+            </li>
+          ))}
+        </ul>
       </div>
       {images.length > 0 && (
-        <div className="mt-16 grid gap-5 md:grid-cols-3">
+        <div className={`mt-16 grid gap-4 ${images.length > 2 ? "md:grid-cols-[1.6fr_1fr] md:grid-rows-2" : "md:grid-cols-2"}`}>
           {images.slice(0, 3).map((image, imageIndex) => (
-            <Link key={image.url} to={`/portfolio?category=${encodeURIComponent(category ?? eyebrow)}`} className="group relative aspect-[4/3] overflow-hidden border border-border/50">
+            <Link
+              key={image.url}
+              to={`/portfolio?category=${encodeURIComponent(category ?? eyebrow)}`}
+              className={`group relative overflow-hidden border border-border/50 ${images.length > 2 && imageIndex === 0 ? "aspect-[4/3] md:row-span-2 md:aspect-auto" : "aspect-[4/3] md:aspect-auto"}`}
+            >
               <img src={image.url} alt={image.alt} loading="lazy" decoding="async" className="h-full w-full object-cover transition-smooth group-hover:scale-105" />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/50 to-transparent" />
-              <span className="absolute bottom-4 left-5 text-[10px] uppercase tracking-[0.3em] text-primary">0{imageIndex + 1}</span>
+              <span className="absolute bottom-4 left-5 border border-primary/40 bg-background/80 px-2 py-1 text-[10px] uppercase tracking-[0.3em] text-primary">0{imageIndex + 1}</span>
             </Link>
           ))}
         </div>
@@ -106,6 +110,7 @@ const Events = () => {
       services: ["Wedding Planning", "Wedding Coordination", "Venue Coordination", "Stage & Mandapam Decoration", "Floral Styling", "Photography & Videography", "Catering & Hospitality", "Nadaswaram & Thavil", "Chenda Melam", "DJ & Entertainment", "Special Couple Entries", "Purohithar & Ritual Coordination", "Bridal Makeup & Styling", "Guest Management", "Lighting & LED Production"],
       images: portfolio?.weddings,
       category: "Wedding",
+      showCta: true,
     },
     {
       eyebrow: "Engagements",

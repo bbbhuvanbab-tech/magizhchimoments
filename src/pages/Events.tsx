@@ -46,36 +46,24 @@ interface EventDetailProps {
   eyebrow: string;
   title: string;
   description: string;
-  services: string[];
   images?: PortfolioImage[];
   category?: string;
   index: number;
-  showCta?: boolean;
+  linkLabel?: string;
 }
 
-const EventDetail = ({ eyebrow, title, description, services, images = [], category, index, showCta = false }: EventDetailProps) => (
+const EventDetail = ({ eyebrow, title, description, images = [], category, index, linkLabel }: EventDetailProps) => (
   <section id={eyebrow.toLowerCase().replace(/ & | /g, "-")} className={`scroll-mt-28 border-t border-border/50 py-24 md:scroll-mt-32 md:py-32 ${index % 2 === 1 ? "bg-card/25" : ""}`}>
     <div className="container mx-auto px-6">
       <div className="max-w-3xl">
           <p className="text-xs uppercase tracking-[0.4em] text-primary">— {eyebrow} —</p>
           <h2 className="mt-6 font-serif text-4xl leading-tight text-gradient-gold md:text-6xl">{title}</h2>
           <p className="mt-7 max-w-xl text-base leading-8 text-muted-foreground">{description}</p>
-          {showCta && (
-            <Button asChild variant="outline" className="mt-9 h-11 rounded-none border-primary/60 bg-transparent px-6 text-xs uppercase tracking-[0.25em] text-primary hover:bg-primary hover:text-primary-foreground">
-              <Link to="/contact">Plan Your Event <ArrowRight /></Link>
-            </Button>
+          {linkLabel && (
+            <Link to="/contact" className="mt-9 inline-flex items-center gap-3 border-b border-primary/40 pb-1 text-xs uppercase tracking-[0.25em] text-primary transition-smooth hover:border-primary">
+              {linkLabel} <ArrowRight size={14} />
+            </Link>
           )}
-      </div>
-      <div className="mt-14 border-t border-border/60 pt-8">
-        <p className="mb-4 text-xs uppercase tracking-[0.3em] text-primary">What We Can Coordinate</p>
-        <ul className="grid sm:grid-cols-2 lg:grid-cols-3">
-          {services.map((service) => (
-            <li key={service} className="flex items-center gap-4 border-b border-border/50 py-3.5 pr-5 text-sm text-foreground/85">
-              <span className="h-1 w-1 shrink-0 bg-primary" aria-hidden="true" />
-              {service}
-            </li>
-          ))}
-        </ul>
       </div>
       {images.length > 0 && (
         <div className={`mt-16 grid gap-4 ${images.length > 2 ? "md:grid-cols-[1.6fr_1fr] md:grid-rows-2" : "md:grid-cols-2"}`}>
@@ -106,67 +94,58 @@ const Events = () => {
     {
       eyebrow: "Weddings",
       title: "Vows Beneath Gilded Skies",
-      description: "End-to-end wedding experiences shaped through thoughtful planning, trusted coordination, tradition, hospitality and beautifully executed details.",
-      services: ["Wedding Planning", "Wedding Coordination", "Venue Coordination", "Stage & Mandapam Decoration", "Floral Styling", "Photography & Videography", "Catering & Hospitality", "Nadaswaram & Thavil", "Chenda Melam", "DJ & Entertainment", "Special Couple Entries", "Purohithar & Ritual Coordination", "Bridal Makeup & Styling", "Guest Management", "Lighting & LED Production"],
+      description: "From intimate family ceremonies to grand wedding celebrations, every moment is thoughtfully planned around tradition, people and the way you want your day to feel.",
       images: portfolio?.weddings,
       category: "Wedding",
-      showCta: true,
+      linkLabel: "Explore Weddings",
     },
     {
       eyebrow: "Engagements",
       title: "The Promise, Beautifully Set",
-      description: "Intimate engagement celebrations planned with thoughtful rituals, welcoming hospitality, beautiful styling and seamless coordination.",
-      services: ["Engagement Planning", "Ring Ceremony Coordination", "Decoration", "Photography", "Catering", "Couple Entry", "Nadaswaram", "DJ / Music", "Guest Hospitality", "Event Coordination"],
+      description: "An engagement is the beginning of a beautiful chapter. We create celebrations that feel personal, welcoming and meaningful to both families.",
       images: portfolio?.engagements,
       category: "engagement",
     },
     {
       eyebrow: "Receptions",
       title: "An Evening Worth Remembering",
-      description: "Elegant reception celebrations where entertainment, dining, photography, production and guest experience come together seamlessly.",
-      services: ["Reception Planning", "Stage & Venue Styling", "Photography & Videography", "Catering", "DJ", "Live Music", "Chenda Melam", "Special Entry", "LED & Lighting", "Emcee / Anchor", "Guest Hospitality"],
+      description: "Elegant evenings designed around the couple, their guests and the moments they want to remember long after the celebration ends.",
       images: portfolio?.weddings.slice(3, 6),
       category: "Wedding",
     },
     {
       eyebrow: "Birthdays",
       title: "Milestones, Reimagined",
-      description: "Personalised birthday experiences planned around personality, theme, entertainment, food and memorable moments.",
-      services: ["Theme Planning", "Decoration", "Photography", "Catering", "Cake Coordination", "DJ & Music", "Entertainment", "Special Effects", "Guest Management"],
+      description: "From children's celebrations to milestone birthdays, we create memorable occasions shaped around personality, theme, family and unforgettable moments.",
       images: portfolio?.birthdays,
       category: "birthday",
     },
     {
       eyebrow: "Baby Showers",
       title: "A Tender Welcome",
-      description: "Seemantham and modern baby shower celebrations — warmly planned, beautifully hosted and styled with care for a family's new beginning.",
-      services: ["Baby Shower Planning", "Seemantham Coordination", "Traditional Services", "Theme Decoration", "Photography", "Catering", "Welcome Arrangements", "Guest Hospitality"],
+      description: "Seemantham rituals and modern baby showers, thoughtfully planned around family traditions, warm hospitality and the joy of welcoming a new beginning.",
       images: portfolio?.babyShowers,
       category: "baby shower",
     },
     {
       eyebrow: "Housewarming",
       title: "A Beautiful Beginning",
-      description: "Thoughtfully coordinated Gruhapravesam and housewarming celebrations that honour tradition while making every guest feel welcome.",
-      services: ["Gruhapravesam Coordination", "Purohithar", "Pooja Requirements", "Traditional Decoration", "Floral Arrangements", "Nadaswaram", "Catering", "Photography", "Guest Hospitality"],
+      description: "Meaningful housewarming celebrations that honour tradition while creating a warm and memorable experience for family and guests.",
     },
     {
       eyebrow: "Corporate",
       title: "Professional Events. Thoughtfully Delivered.",
-      description: "From corporate gatherings and launches to team celebrations and formal occasions, we coordinate every detail with clarity and professionalism.",
-      services: ["Corporate Event Planning", "Venue Coordination", "Stage & Branding", "Photography & Videography", "Catering", "Sound & Lighting", "LED Screens", "Emcee", "Entertainment", "Guest Management", "Event-Day Coordination"],
+      description: "From formal gatherings and launches to team celebrations and special occasions, we create well-organised experiences that reflect the purpose of every event.",
     },
     {
       eyebrow: "Tradition & Culture",
       title: "Celebrations Rooted in Tradition",
-      description: "Meaningful ceremonies shaped with respect for every custom, sound and shared family tradition.",
-      services: ["Traditional Ceremonies", "Purohithar Coordination", "Nadaswaram", "Thavil", "Chenda Melam", "Traditional Decoration", "Catering", "Floral & Garland Services", "Guest Hospitality", "Ritual Coordination"],
+      description: "From meaningful family ceremonies to cultural gatherings, we create celebrations that respect tradition while bringing every generation together.",
     },
     {
       eyebrow: "Private Celebrations",
       title: "Made Around Your Moment",
-      description: "Personal occasions designed around the people, details and feeling that make your celebration entirely your own.",
-      services: ["Family Celebrations", "Milestone Events", "Anniversaries", "Surprise Celebrations", "Private Parties", "Cultural Gatherings", "Intimate Celebrations"],
+      description: "Intimate celebrations designed around the people, stories and details that make your occasion uniquely yours.",
     },
   ];
 
@@ -214,6 +193,17 @@ const Events = () => {
       </section>
 
       {details.map((detail, index) => <EventDetail key={detail.eyebrow} {...detail} index={index} />)}
+
+      <section className="border-y border-border/50 bg-card/25 py-24 md:py-32">
+        <div className="container mx-auto px-6 text-center">
+          <p className="text-xs uppercase tracking-[0.45em] text-primary">— One Complete Experience —</p>
+          <h2 className="mx-auto mt-6 max-w-3xl font-serif text-4xl leading-tight text-gradient-gold md:text-6xl">Every Celebration, Thoughtfully Coordinated.</h2>
+          <p className="mx-auto mt-7 max-w-2xl text-base leading-8 text-muted-foreground">Whatever the occasion, our team brings together the planning, creative direction, trusted event partners and coordination needed to make the celebration feel effortless.</p>
+          <Button asChild variant="outline" className="mt-10 h-12 rounded-none border-primary/60 bg-transparent px-8 text-xs uppercase tracking-[0.25em] text-primary hover:bg-primary hover:text-primary-foreground">
+            <Link to="/services">Explore Our Services <ArrowRight /></Link>
+          </Button>
+        </div>
+      </section>
 
       <section className="bg-gradient-dark py-28 md:py-36">
         <div className="container mx-auto px-6 text-center">

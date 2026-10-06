@@ -17,7 +17,6 @@ import {
 import { useEffect, useState } from "react";
 import hero from "@/assets/hero.jpg";
 import SectionHeader from "@/components/SectionHeader";
-import CategoryGallery from "@/components/CategoryGallery";
 import { Button } from "@/components/ui/button";
 import { fetchPortfolioImages } from "@/data/portfolio";
 import type { PortfolioImage } from "@/data/portfolio";
@@ -88,10 +87,27 @@ const services = [
 const eventTypes = [
   "Weddings",
   "Engagements",
+  "Receptions",
   "Birthdays",
   "Baby Showers",
+  "Housewarming & Gruhapravesam",
   "Corporate Events",
+  "Traditional & Cultural Events",
   "Private Celebrations",
+];
+
+const processSteps = [
+  ["01", "Discover", "We begin with your occasion, priorities, traditions and the feeling you want guests to remember."],
+  ["02", "Plan", "Every service, supplier, schedule and responsibility is brought into one considered plan."],
+  ["03", "Create", "Design, hospitality, entertainment and cultural details are shaped into one complete experience."],
+  ["04", "Execute", "Our team coordinates the celebration on site so you can be fully present for every moment."],
+];
+
+const reasons = [
+  ["Complete coordination", "One team aligning every service, timeline and moving part."],
+  ["Trusted services", "A considered network of specialists managed with care and accountability."],
+  ["Personalised planning", "Every decision is shaped around your people, priorities and traditions."],
+  ["Event-day management", "Calm, attentive coordination from preparation through the final farewell."],
 ];
 
 const Index = () => {
@@ -182,19 +198,46 @@ const Index = () => {
       </section>
 
       {/* EVENTS */}
-      <section id="events" className="scroll-mt-24 py-24 md:py-32">
+      <section id="events" className="scroll-mt-24 border-b border-border/40 py-24 md:py-32">
         <div className="container mx-auto px-6">
-          <div className="grid items-end gap-12 lg:grid-cols-[1fr_1.1fr]">
+          <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
             <SectionHeader
               eyebrow="Events"
               title="Every Occasion, Fully Realised"
-              subtitle="Intimate or expansive, traditional or contemporary — each event is planned as a complete experience, not simply a beautiful setting."
+              subtitle="Every celebration has its own rhythm, traditions and personality. We bring the right planning, people and services together for each occasion."
               align="left"
             />
-            <div className="grid grid-cols-2 border-t border-border/60 sm:grid-cols-3">
-              {eventTypes.map((event) => (
-                <div key={event} className="border-b border-border/60 py-5 pr-4 font-serif text-lg text-foreground">
-                  {event}
+            <div>
+              <div className="grid border-t border-border/60 sm:grid-cols-2">
+                {eventTypes.map((event, index) => (
+                  <div key={event} className="flex min-h-20 items-center gap-4 border-b border-border/60 py-5 pr-5">
+                    <span className="text-[10px] tracking-[0.2em] text-primary">{String(index + 1).padStart(2, "0")}</span>
+                    <span className="font-serif text-xl leading-tight text-foreground">{event}</span>
+                  </div>
+                ))}
+              </div>
+              <Link to="/events" className="mt-8 inline-flex items-center gap-3 border-b border-primary/40 pb-1 text-xs uppercase tracking-[0.25em] text-primary transition-smooth hover:border-primary">
+                Explore All Events <ArrowRight size={14} />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ONE TEAM */}
+      <section className="border-b border-border/40 bg-card/25 py-24 md:py-32">
+        <div className="container mx-auto px-6">
+          <div className="grid items-center gap-14 lg:grid-cols-[0.8fr_1.2fr] lg:gap-24">
+            <div>
+              <p className="text-xs uppercase tracking-[0.4em] text-primary">— One Team —</p>
+              <h2 className="mt-6 max-w-xl font-serif text-4xl leading-tight text-gradient-gold md:text-6xl">From Planning to the Final Farewell</h2>
+              <p className="mt-7 max-w-lg text-base leading-8 text-muted-foreground">Instead of managing many separate teams, you have one trusted point of coordination bringing every part of the celebration together.</p>
+            </div>
+            <div className="grid border-t border-border/60 sm:grid-cols-2">
+              {["Planning & Coordination", "Design & Production", "Hospitality & Catering", "Photography & Film", "Music & Entertainment", "Traditions & Rituals"].map((item, index) => (
+                <div key={item} className="flex min-h-24 items-center gap-5 border-b border-border/60 py-5 sm:px-5">
+                  <span className="text-[10px] tracking-[0.2em] text-primary">0{index + 1}</span>
+                  <span className="font-serif text-xl text-foreground">{item}</span>
                 </div>
               ))}
             </div>
@@ -202,76 +245,67 @@ const Index = () => {
         </div>
       </section>
 
-      {/* WEDDINGS */}
-      <section className="pb-24 md:pb-32 container mx-auto px-6">
-        <SectionHeader
-          eyebrow="Weddings"
-          title="Vows Beneath Gilded Skies"
-          subtitle="End-to-end wedding experiences shaped through thoughtful planning, trusted coordination, heritage, artistry and serene hospitality."
-        />
-        <CategoryGallery images={weddings.slice(0, 4)} category="Wedding" />
-        <div className="text-center mt-14">
-          <Link to="/portfolio" className="inline-flex items-center gap-3 text-primary text-xs tracking-[0.3em] uppercase border-b border-primary/40 pb-1 hover:border-primary transition-smooth">
-            Explore Wedding <ArrowRight size={14} />
-          </Link>
+      {/* HOW WE WORK */}
+      <section className="border-b border-border/40 py-24 md:py-32">
+        <div className="container mx-auto px-6">
+          <SectionHeader eyebrow="How We Work" title="Considered at Every Step" />
+          <div className="grid border-l border-t border-border/60 md:grid-cols-2 lg:grid-cols-4">
+            {processSteps.map(([number, title, description]) => (
+              <article key={number} className="min-h-64 border-b border-r border-border/60 p-7 md:p-8">
+                <span className="text-xs tracking-[0.25em] text-primary">{number}</span>
+                <h3 className="mt-10 font-serif text-3xl text-foreground">{title}</h3>
+                <p className="mt-5 text-sm leading-7 text-muted-foreground">{description}</p>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
-      <div className="gold-divider" />
-
-      {/* ENGAGEMENT */}
-      <section className="py-24 md:py-32 container mx-auto px-6">
-        <SectionHeader
-          eyebrow="Engagement"
-          title="The Promise, Beautifully Set"
-          subtitle="Intimate engagement celebrations planned with thoughtful rituals, welcoming hospitality and quiet elegance."
-        />
-        <CategoryGallery images={engagements.slice(0, 3)} category="engagement" />
-        <div className="text-center mt-14">
-  <Link to="/portfolio?category=engagement" className="inline-flex items-center gap-3 text-primary text-xs tracking-[0.3em] uppercase border-b border-primary/40 pb-1 hover:border-primary transition-smooth">
-    Explore Engagement <ArrowRight size={14} />
-  </Link>
-</div>
+      {/* PORTFOLIO PREVIEW */}
+      <section className="border-b border-border/40 bg-card/25 py-24 md:py-32">
+        <div className="container mx-auto px-6">
+          <div className="mb-14 flex flex-col gap-8 md:mb-20 md:flex-row md:items-end md:justify-between">
+            <div>
+              <p className="text-xs uppercase tracking-[0.4em] text-primary">— Portfolio —</p>
+              <h2 className="mt-6 font-serif text-4xl leading-tight text-gradient-gold md:text-6xl">Moments We've Brought Together</h2>
+            </div>
+            <Link to="/portfolio" className="inline-flex w-fit items-center gap-3 border-b border-primary/40 pb-1 text-xs uppercase tracking-[0.25em] text-primary transition-smooth hover:border-primary">
+              View Full Portfolio <ArrowRight size={14} />
+            </Link>
+          </div>
+          <div className="grid grid-cols-2 gap-3 md:grid-cols-12 md:grid-rows-2">
+            {[weddings[0], engagements[0], birthdays[0], babyShowers[0], weddings[4], engagements[6]].filter(Boolean).map((image, index) => (
+              <Link key={`${image.category}-${image.name}`} to={`/portfolio?category=${encodeURIComponent(image.category)}`} className={`group relative overflow-hidden border border-border/50 ${index === 0 || index === 5 ? "col-span-2 aspect-[4/3] md:col-span-5 md:row-span-2 md:aspect-auto" : "aspect-square md:col-span-2"}`}>
+                <img src={image.url} alt={image.alt} loading={index < 2 ? "eager" : "lazy"} decoding="async" className="h-full w-full object-cover transition-smooth group-hover:scale-105" />
+              </Link>
+            ))}
+          </div>
+        </div>
       </section>
 
-      <div className="gold-divider" />
-
-      {/* BABY SHOWER */}
-      <section className="py-24 md:py-32 container mx-auto px-6">
+      {/* WHY MAGIZHCHI MOMENTS */}
+      <section className="py-24 md:py-32">
+        <div className="container mx-auto px-6">
         <SectionHeader
-          eyebrow="Baby Shower"
-          title="A Tender Welcome"
-          subtitle="Seemantham rituals and modern showers — warmly planned, beautifully hosted and styled with care for a family's new beginning."
-        />
-        <CategoryGallery images={babyShowers.slice(0, 3)} category="baby shower" />
-        <div className="text-center mt-14">
-  <Link to="/portfolio?category=baby%20shower" className="inline-flex items-center gap-3 text-primary text-xs tracking-[0.3em] uppercase border-b border-primary/40 pb-1 hover:border-primary transition-smooth">
-    Explore Baby Shower <ArrowRight size={14} />
-  </Link>
-</div>
-      </section>
-
-      <div className="gold-divider" />
-
-      {/* BIRTHDAY */}
-      <section className="py-24 md:py-32 container mx-auto px-6">
-        <SectionHeader
-          eyebrow="Birthday"
-          title="Milestones, Reimagined"
-          subtitle="Sophisticated birthday experiences planned from guest welcome to the final toast, with personality, polish and a hint of theatre."
-        />
-        <CategoryGallery images={birthdays.slice(0, 2)} category="birthday" />
-        <div className="text-center mt-14">
-  <Link to="/portfolio?category=birthday" className="inline-flex items-center gap-3 text-primary text-xs tracking-[0.3em] uppercase border-b border-primary/40 pb-1 hover:border-primary transition-smooth">
-    Explore Birthday <ArrowRight size={14} />
-  </Link>
-</div>
+            eyebrow="Why Magizhchi Moments"
+            title="One Trusted Team. Every Detail Considered."
+            subtitle="A celebration should feel effortless to experience, even when it takes exceptional care to create."
+          />
+          <div className="grid border-l border-t border-border/60 sm:grid-cols-2 lg:grid-cols-4">
+            {reasons.map(([title, description], index) => (
+              <article key={title} className="min-h-52 border-b border-r border-border/60 p-7 md:p-8">
+                <span className="text-[10px] tracking-[0.2em] text-primary">0{index + 1}</span>
+                <h3 className="mt-8 font-serif text-2xl leading-tight text-foreground">{title}</h3>
+                <p className="mt-4 text-sm leading-7 text-muted-foreground">{description}</p>
+              </article>
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* CTA */}
-      <section className="relative py-32 md:py-40 overflow-hidden">
+      <section className="relative overflow-hidden border-t border-border/40 py-32 md:py-40">
         <div className="absolute inset-0 bg-gradient-dark" />
-        <div className="absolute inset-0 opacity-30" style={{ background: "radial-gradient(circle at 50% 50%, hsl(43 56% 52% / 0.25), transparent 60%)" }} />
         <div className="relative container mx-auto text-center px-6">
           <p className="text-xs tracking-[0.5em] uppercase text-primary mb-6">— Let's Begin —</p>
           <h2 className="font-serif text-4xl md:text-6xl text-gradient-gold max-w-3xl mx-auto leading-tight">
@@ -280,12 +314,9 @@ const Index = () => {
           <p className="text-muted-foreground mt-8 max-w-xl mx-auto leading-relaxed">
             We accept a limited number of celebrations each season, allowing our team to plan and manage every detail with care.
           </p>
-          <Link
-            to="/contact"
-            className="inline-flex items-center gap-3 mt-10 px-10 py-4 bg-gradient-gold text-primary-foreground text-xs tracking-[0.3em] uppercase hover-gold-glow transition-smooth"
-          >
-            Plan Your Event <ArrowRight size={14} />
-          </Link>
+          <Button asChild className="mt-10 h-12 rounded-none px-9 text-xs uppercase tracking-[0.3em] hover-gold-glow">
+            <Link to="/contact">Plan Your Event <ArrowRight size={14} /></Link>
+          </Button>
         </div>
       </section>
     </div>

@@ -1,17 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import {
-  ArrowRight,
-  Camera,
-  Flower2,
-  HeartHandshake,
-  Lightbulb,
-  Music2,
-  Sparkles,
-  UtensilsCrossed,
-  Users,
-  WandSparkles,
-} from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import SectionHeader from "@/components/SectionHeader";
 import { fetchPortfolioImages } from "@/data/portfolio";
@@ -27,19 +16,6 @@ const eventTypes = [
   ["07", "Corporate Events", "Professional events, launches, gatherings and celebrations coordinated with precision."],
   ["08", "Traditional & Cultural Events", "Meaningful celebrations rooted in tradition, ceremony, music and cultural details."],
   ["09", "Private Celebrations", "Intimate family celebrations and special occasions planned around your people, preferences and personality."],
-];
-
-const ecosystem = [
-  { icon: HeartHandshake, title: "Event Planning", text: "Complete planning, timelines, coordination and execution" },
-  { icon: Flower2, title: "Decoration", text: "Stage, floral, mandapam, entrance and venue styling" },
-  { icon: Camera, title: "Photography", text: "Candid, traditional, cinematic, drone and event coverage" },
-  { icon: UtensilsCrossed, title: "Catering", text: "Traditional meals, banana-leaf service, buffet, live counters and hospitality" },
-  { icon: Music2, title: "Music & Entertainment", text: "Nadaswaram, Thavil, Chenda Melam, DJ, live music and emcee" },
-  { icon: Sparkles, title: "Special Experiences", text: "Couple entries, fog entry, flower shower, cold sparks and themed experiences" },
-  { icon: WandSparkles, title: "Traditional Services", text: "Purohithar, rituals, seer arrangements, garlands and ceremonial coordination" },
-  { icon: Users, title: "Bridal & Groom", text: "Makeup, hairstyling, saree draping, grooming and mehendi" },
-  { icon: Lightbulb, title: "Lighting & Production", text: "Stage lighting, LED walls, sound, projectors and technical production" },
-  { icon: HeartHandshake, title: "Guest Hospitality", text: "Welcome arrangements, guest coordination, transport and event-day assistance" },
 ];
 
 interface EventDetailProps {
@@ -171,21 +147,6 @@ const Events = () => {
                 <div className="flex items-center gap-4 text-primary"><span className="text-xs tracking-[0.25em]">{number}</span><span className="h-px w-10 bg-primary/40" /></div>
                 <h2 className="mt-10 font-serif text-3xl leading-tight text-foreground">{title}</h2>
                 <p className="mt-5 text-sm leading-7 text-muted-foreground">{description}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="border-y border-border/50 bg-card/30 py-24 md:py-32">
-        <div className="container mx-auto px-6">
-          <SectionHeader eyebrow="One Team" title="One Celebration. Every Detail Coordinated." subtitle="Your celebration should not feel like a collection of separate vendors. Magizhchi Moments brings planning, creative direction, trusted partners and event-day coordination together under one experienced team." />
-          <div className="grid gap-x-12 md:grid-cols-2 lg:grid-cols-5">
-            {ecosystem.map(({ icon: Icon, title, text }) => (
-              <article key={title} className="border-b border-border/60 py-7">
-                <Icon className="h-5 w-5 text-primary" strokeWidth={1.4} aria-hidden="true" />
-                <h3 className="mt-5 text-xs uppercase tracking-[0.2em] text-primary">{title}</h3>
-                <p className="mt-3 text-sm leading-6 text-muted-foreground">{text}</p>
               </article>
             ))}
           </div>

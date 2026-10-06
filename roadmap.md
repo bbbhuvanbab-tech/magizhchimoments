@@ -9,3 +9,5 @@
 - [x] Add a dedicated Events page with complete planning details and existing portfolio imagery.
 - [x] Connect Events navigation and footer links to the dedicated page.
 - [x] Refine the homepage journey with process, portfolio preview, and trust sections.
+- [x] Apply the uploaded homepage-only brief: concise full-event positioning, reordered previews, three pillars and approved copy.
+- [x] Verify homepage images and destination links on desktop, tablet and mobile without changing other pages or systems.

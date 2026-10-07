@@ -11,3 +11,5 @@
 - [x] Refine the homepage journey with process, portfolio preview, and trust sections.
 - [x] Apply the uploaded homepage-only brief: concise full-event positioning, reordered previews, three pillars and approved copy.
 - [x] Verify homepage images and destination links on desktop, tablet and mobile without changing other pages or systems.
+- [x] Review existing photographs for the final homepage-only polish; retain current hero and selected images because available photos show decor rather than real ceremony or guest experiences.
+- [x] Verify homepage photos, calls-to-action and mobile layout after the final polish.

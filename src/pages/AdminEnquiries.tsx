@@ -126,7 +126,15 @@ const AdminEnquiries = () => {
                 {enquiries.map((e) => (
                   <TableRow key={e.id}>
                     <TableCell className="whitespace-nowrap text-xs text-muted-foreground">
-                      {new Date(e.created_at).toLocaleString()}
+                       {new Date(e.created_at).toLocaleString("en-IN", {
+                         timeZone: "Asia/Kolkata",
+                         day: "numeric",
+                         month: "short",
+                         year: "numeric",
+                         hour: "numeric",
+                         minute: "2-digit",
+                         hour12: true,
+                       }).replace(/\b(am|pm)\b/g, (period) => period.toUpperCase())}
                     </TableCell>
                     <TableCell className="font-medium">{e.name}</TableCell>
                     <TableCell>{e.email}</TableCell>

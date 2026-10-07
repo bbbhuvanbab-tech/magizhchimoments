@@ -147,7 +147,16 @@ function Contact() {
       toast.error("Something went wrong. Please try again.");
       return;
     }
-    toast.success("Thank you — we'll be in touch within 48 hours.");
+    toast.success("Thank you for reaching out.", {
+      description: (
+        <div className="space-y-3 text-sm leading-6 text-muted-foreground">
+          <p>Your enquiry has been received. We'll get back to you as soon as possible.</p>
+          <p>We look forward to helping you bring your celebration to life.</p>
+        </div>
+      ),
+      classNames: { title: "font-serif text-lg text-primary" },
+      duration: 10000,
+    });
     setForm({ name: "", phone: "", email: "", event: "", date: "", message: "" });
   };
 
@@ -157,7 +166,7 @@ function Contact() {
         <SectionHeader
           eyebrow="Contact"
           title="Begin Your Story"
-          subtitle="Tell us about the celebration you're imagining. We respond personally to every enquiry within 48 hours."
+          subtitle="Tell us about the celebration you're imagining. We'll get back to you as soon as possible."
         />
 
         <div className="grid md:grid-cols-5 gap-12 md:gap-16 max-w-6xl mx-auto">
@@ -195,7 +204,7 @@ function Contact() {
                 <MapPin size={18} className="text-primary mt-1" />
                 <div>
                   <p className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground">Studio</p>
-                  <p className="text-foreground">Chennai, India</p>
+                  <p className="text-foreground">191x, 4th Main Rd,<br />Meenatchi Sundareswarar Koil,<br />Sadasiva Nagar, Madipakkam,<br />Chennai - 600091</p>
                 </div>
               </div>
             </div>

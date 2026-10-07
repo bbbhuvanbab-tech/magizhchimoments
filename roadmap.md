@@ -13,5 +13,5 @@
 - [x] Verify homepage images and destination links on desktop, tablet and mobile without changing other pages or systems.
 - [x] Review existing photographs for the final homepage-only polish; retain current hero and selected images because available photos show decor rather than real ceremony or guest experiences.
 - [x] Verify homepage photos, calls-to-action and mobile layout after the final polish.
-- [ ] Update only Contact response wording, Studio address and successful enquiry confirmation.
-- [ ] Verify Contact layout and successful enquiry submission to the existing system.
+- [x] Update only Contact response wording, Studio address and successful enquiry confirmation.
+- [x] Verify Contact layout and successful enquiry submission to the existing system.

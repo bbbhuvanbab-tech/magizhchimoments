@@ -160,6 +160,7 @@ function Contact() {
       document.getElementById(`enquiry-${Object.keys(validation)[0]}`)?.focus();
       return;
     }
+    if (!e.currentTarget.reportValidity()) return;
     if (!isSupabaseConfigured) {
       toast.error("Service unavailable. Please try again later.");
       return;
@@ -200,7 +201,7 @@ function Contact() {
   };
 
   return (
-    <div className="pt-32 md:pt-40 pb-24">
+    <div className="pt-[calc(var(--header-height,9rem)+2rem)] md:pt-[calc(var(--header-height,9rem)+2.5rem)] pb-24">
       <div className="container mx-auto px-6">
         <SectionHeader
           eyebrow="Contact"

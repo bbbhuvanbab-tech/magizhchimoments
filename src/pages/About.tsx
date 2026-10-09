@@ -10,7 +10,7 @@ const philosophy = [
 ];
 
 const About = () => (
-  <div className="pt-32 md:pt-40 pb-20">
+  <div className="pt-[calc(var(--header-height,9rem)+2rem)] md:pt-[calc(var(--header-height,9rem)+2.5rem)] pb-20">
     {/* Brand Story */}
     <section className="container mx-auto px-6">
       <SectionHeader eyebrow="Our Story" title="Where Moments Become Heirlooms" />

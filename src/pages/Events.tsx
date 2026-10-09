@@ -26,9 +26,10 @@ interface EventDetailProps {
   category?: string;
   index: number;
   linkLabel?: string;
+  linkTo?: string;
 }
 
-const EventDetail = ({ eyebrow, title, description, images = [], category, index, linkLabel }: EventDetailProps) => (
+const EventDetail = ({ eyebrow, title, description, images = [], category, index, linkLabel, linkTo }: EventDetailProps) => (
   <section id={eyebrow.toLowerCase().replace(/ & | /g, "-")} className={`scroll-mt-28 border-t border-border/50 py-24 md:scroll-mt-32 md:py-32 ${index % 2 === 1 ? "bg-card/25" : ""}`}>
     <div className="container mx-auto px-6">
       <div className="max-w-3xl">
@@ -36,7 +37,7 @@ const EventDetail = ({ eyebrow, title, description, images = [], category, index
           <h2 className="mt-6 font-serif text-4xl leading-tight text-gradient-gold md:text-6xl">{title}</h2>
           <p className="mt-7 max-w-xl text-base leading-8 text-muted-foreground">{description}</p>
           {linkLabel && (
-            <Link to="/contact" className="mt-9 inline-flex items-center gap-3 border-b border-primary/40 pb-1 text-xs uppercase tracking-[0.25em] text-primary transition-smooth hover:border-primary">
+            <Link to={linkTo ?? `/portfolio?category=${encodeURIComponent(category ?? eyebrow)}`} className="mt-9 inline-flex items-center gap-3 border-b border-primary/40 pb-1 text-xs uppercase tracking-[0.25em] text-primary transition-smooth hover:border-primary">
               {linkLabel} <ArrowRight size={14} />
             </Link>
           )}
@@ -74,6 +75,7 @@ const Events = () => {
       images: portfolio?.weddings,
       category: "Wedding",
       linkLabel: "Explore Weddings",
+      linkTo: "/portfolio?category=Wedding",
     },
     {
       eyebrow: "Engagements",

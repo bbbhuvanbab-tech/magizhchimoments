@@ -7,6 +7,10 @@ All colors MUST be HSL.
 */
 
 @layer base {
+  html {
+    scroll-padding-top: calc(var(--header-height, 9rem) + 1rem);
+  }
+
   :root {
     /* Magizhchi Moments — Luxury Black & Champagne Gold */
     --background: 0 0% 4%;

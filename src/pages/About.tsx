@@ -10,7 +10,7 @@ const philosophy = [
 ];
 
 const About = () => (
-  <div className="pt-32 md:pt-40 pb-20">
+  <div className="pt-[calc(var(--header-height,9rem)+2rem)] md:pt-[calc(var(--header-height,9rem)+2.5rem)] pb-20">
     {/* Brand Story */}
     <section className="container mx-auto px-6">
       <SectionHeader eyebrow="Our Story" title="Where Moments Become Heirlooms" />
@@ -56,7 +56,7 @@ const About = () => (
       <SectionHeader eyebrow="What Makes Us Different" title="A House, Not a Factory" />
       <div className="max-w-3xl mx-auto space-y-6 text-muted-foreground leading-relaxed text-base md:text-lg text-center">
         <p>
-          We accept a deliberately small number of celebrations each year — never more than our hands and hearts can hold. This means every Magizhchi moment receives bespoke design, custom florals, and the unhurried attention it deserves.
+          Every celebration receives thoughtful planning, seamless coordination and attentive event-day management. We bring people, trusted services and personal details together so you can enjoy the moments that matter.
         </p>
         <p>
           You will not find us replicating Pinterest boards. Each event begins with a single conversation — about your love story, your family, the colours of your childhood, the songs of your grandmothers — and grows from there.
@@ -82,7 +82,7 @@ const About = () => (
           </p>
         </div>
         <div className="order-1 md:order-2 relative aspect-[3/4] overflow-hidden border border-border/40">
-          <img src="https://mwklngfmvalxwjdomtxa.supabase.co/storage/v1/object/public/portfolio-images/Wedding/wedding5.jpg" alt="Signature floral installation" loading="lazy" className="w-full h-full object-cover" />
+          <img src={wedding16} alt="Signature floral installation" loading="lazy" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-background/20" />
         </div>
       </div>

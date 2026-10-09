@@ -100,3 +100,20 @@ export const fetchAllPortfolioImages = async (): Promise<PortfolioImage[]> => {
     ...categorized.birthdays,
   ];
 };
+
+// These files have identical content; preserve category records but display each photo once.
+const identicalPhotos = new Map([
+  [engagement12, wedding2],
+  [engagement14, wedding3],
+  [engagement13, engagement3],
+]);
+
+export const uniquePortfolioImages = (images: PortfolioImage[]): PortfolioImage[] => {
+  const seen = new Set<string>();
+  return images.filter((image) => {
+    const identity = identicalPhotos.get(image.url) ?? image.url;
+    if (seen.has(identity)) return false;
+    seen.add(identity);
+    return true;
+  });
+};

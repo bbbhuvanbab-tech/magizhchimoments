@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import Logo from "./Logo";
@@ -16,6 +16,17 @@ const links = [
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const header = headerRef.current;
+    if (!header) return;
+    const observer = new ResizeObserver(() => {
+      document.documentElement.style.setProperty("--header-height", `${header.getBoundingClientRect().height}px`);
+    });
+    observer.observe(header);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 30);
@@ -26,8 +37,9 @@ const Navbar = () => {
 
   return (
     <header
+      ref={headerRef}
       className={`fixed top-0 inset-x-0 z-50 transition-smooth ${
-        scrolled ? "bg-background/85 backdrop-blur-md border-b border-border/40" : "bg-transparent"
+        scrolled ? "bg-background border-b border-border/40" : "bg-transparent"
       }`}
     >
       <nav className="container mx-auto flex items-center justify-between py-4 md:py-6">

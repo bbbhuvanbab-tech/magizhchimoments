@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { fetchAllPortfolioImages } from '../data/portfolio';
+import { fetchAllPortfolioImages, uniquePortfolioImages } from '../data/portfolio';
 import type { PortfolioImage } from '../data/portfolio';
 
 const CATEGORIES = ['All', 'Wedding', 'engagement', 'birthday', 'baby shower'];
@@ -18,9 +18,9 @@ export default function Portfolio() {
     });
   }, []);
 
-  const filtered = activeCategory === 'All'
+  const filtered = uniquePortfolioImages(activeCategory === 'All'
     ? images
-    : images.filter(img => img.category === activeCategory);
+    : images.filter(img => img.category === activeCategory));
 
   return (
     <div className="min-h-screen bg-black text-white px-6 pt-32 pb-20">

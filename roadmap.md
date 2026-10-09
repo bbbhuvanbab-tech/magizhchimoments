@@ -1,7 +1,7 @@
 # Roadmap
 
-- [ ] Apply nine targeted corrections: sticky logo, Contact wording, wedding link, Events image review, Portfolio deduplication, About claims/images, and enquiry validation.
-- [ ] Verify valid/invalid enquiry flows and desktop/mobile presentation without changing storage, auth, or security.
+- [x] Apply nine targeted corrections: sticky logo, Contact wording, wedding link, Events image review, Portfolio deduplication, About claims/images, and enquiry validation.
+- [x] Verify valid/invalid enquiry flows and desktop/mobile presentation without changing storage, auth, or security.
 
 - [x] Reposition homepage around premium event planning and management.
 - [x] Add Services and Events homepage sections.

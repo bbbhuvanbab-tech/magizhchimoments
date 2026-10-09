@@ -151,13 +151,15 @@ function Contact() {
     <p id={`${field}-error`} role="alert" className="mt-2 text-sm leading-5 text-primary">{errors[field]}</p>
   ) : null;
 
-  const submit = async (e: React.FormEvent) => {
+  const submit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (pending.current) return;
     const validation = validateEnquiry(form);
     setErrors(validation);
     if (Object.keys(validation).length) {
-      document.getElementById(`enquiry-${Object.keys(validation)[0]}`)?.focus();
+      const invalidField = document.getElementById(`enquiry-${Object.keys(validation)[0]}`);
+      invalidField?.focus({ preventScroll: true });
+      invalidField?.scrollIntoView({ block: "center", behavior: "smooth" });
       return;
     }
     if (!e.currentTarget.reportValidity()) return;

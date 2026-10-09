@@ -1,17 +1,20 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { Button } from "@/components/ui/button";
+import { validateEnquiry } from "@/lib/enquiry-validation";
+import type { EnquiryErrors, EnquiryFields } from "@/lib/enquiry-validation";
 import { Mail, Phone, Instagram, MapPin } from "lucide-react";
 import { DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
 import SectionHeader from "@/components/SectionHeader";
 import { toast } from "sonner";
 import { supabase, isSupabaseConfigured } from "@/integrations/supabase/client";
-const DatePicker = ({ value, onChange }: { value: string; onChange: (date: string) => void }) => {
+const DatePicker = ({ value, onChange, invalid }: { value: string; onChange: (date: string) => void; invalid?: boolean }) => {
   const [open, setOpen] = useState(false);
   const selectedDate = value ? new Date(value) : undefined;
 
   const handleSelectDate = (date: Date | undefined) => {
     if (date) {
-      onChange(date.toISOString().split("T")[0]);
+      onChange(`${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`);
       setOpen(false);
     }
   };
@@ -20,13 +23,20 @@ const DatePicker = ({ value, onChange }: { value: string; onChange: (date: strin
 
   return (
     <div className="relative">
-      <button
+      <Button
+        variant="ghost"
+        id="enquiry-date"
+        aria-label="Event Date"
+        aria-required="true"
+        aria-invalid={invalid || undefined}
+        aria-describedby={invalid ? "date-error" : undefined}
+        aria-expanded={open}
         type="button"
         onClick={() => setOpen(!open)}
-        className="w-full bg-transparent border-b border-border/60 py-3 text-foreground focus:outline-none focus:border-primary transition-smooth text-left"
+        className="w-full bg-transparent border-b border-border/60 py-3 text-foreground focus:outline-none focus:border-primary transition-smooth text-left h-auto justify-start rounded-none px-0 hover:bg-transparent"
       >
         {displayDate}
-      </button>
+      </Button>
       {open && (
         <div
           className="absolute top-full mt-2 left-0 z-50 p-4 rounded-lg shadow-lg"
@@ -126,23 +136,45 @@ const DatePicker = ({ value, onChange }: { value: string; onChange: (date: strin
 function Contact() {
   const [form, setForm] = useState({ name: "", phone: "", email: "", event: "", date: "", message: "" });
   const [submitting, setSubmitting] = useState(false);
+  const pending = useRef(false);
+  const [errors, setErrors] = useState<EnquiryErrors>({});
+
+  const updateField = (field: keyof typeof form, value: string) => {
+    const next = { ...form, [field]: value };
+    setForm(next);
+    if (field in errors) {
+      const nextErrors = validateEnquiry(next);
+      setErrors((current) => ({ ...current, [field]: nextErrors[field as keyof EnquiryFields] }));
+    }
+  };
+  const fieldError = (field: keyof EnquiryFields) => errors[field] ? (
+    <p id={`${field}-error`} role="alert" className="mt-2 text-sm leading-5 text-primary">{errors[field]}</p>
+  ) : null;
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (pending.current) return;
+    const validation = validateEnquiry(form);
+    setErrors(validation);
+    if (Object.keys(validation).length) {
+      document.getElementById(`enquiry-${Object.keys(validation)[0]}`)?.focus();
+      return;
+    }
     if (!isSupabaseConfigured) {
       toast.error("Service unavailable. Please try again later.");
       return;
     }
+    pending.current = true;
     setSubmitting(true);
+    try {
     const { error } = await supabase.from("enquiries").insert({
-      name: form.name,
-      phone: form.phone || null,
-      email: form.email,
+      name: form.name.trim(),
+      phone: form.phone.trim(),
+      email: form.email.trim(),
       event_type: form.event || null,
-      event_date: form.date || null,
+      event_date: form.date,
       message: form.message,
     });
-    setSubmitting(false);
     if (error) {
       toast.error("Something went wrong. Please try again.");
       return;
@@ -158,6 +190,13 @@ function Contact() {
       duration: 10000,
     });
     setForm({ name: "", phone: "", email: "", event: "", date: "", message: "" });
+    setErrors({});
+    } catch {
+      toast.error("Something went wrong. Please try again.");
+    } finally {
+      pending.current = false;
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -175,7 +214,7 @@ function Contact() {
               <p className="text-xs tracking-[0.4em] uppercase text-primary mb-3">Reach Us</p>
               <h3 className="font-serif text-2xl text-foreground mb-6">By appointment only</h3>
               <p className="text-muted-foreground leading-relaxed">
-                Our atelier accepts a limited number of celebrations each season. Share a few details and we'll arrange a private consultation.
+                Share a few details about your celebration, and we'll help bring your vision to life. Get in touch to discuss your event and arrange a consultation.
               </p>
             </div>
             <div className="space-y-5">
@@ -210,22 +249,25 @@ function Contact() {
             </div>
           </div>
 
-          <form onSubmit={submit} className="md:col-span-3 border border-border/40 p-8 md:p-12 space-y-6 bg-card/30">
+          <form noValidate onSubmit={submit} className="md:col-span-3 border border-border/40 p-8 md:p-12 space-y-6 bg-card/30">
             <div className="grid sm:grid-cols-2 gap-6">
               <div>
-                <label className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground block mb-2">Your name</label>
-                <input required value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })}
+                <label htmlFor="enquiry-name" className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground block mb-2">Your name</label>
+                <input required id="enquiry-name" aria-invalid={Boolean(errors.name) || undefined} aria-describedby={errors.name ? "name-error" : undefined} value={form.name} onChange={(e) => updateField("name", e.target.value)}
                   className="w-full bg-transparent border-b border-border/60 py-3 text-foreground focus:outline-none focus:border-primary transition-smooth" />
+                {fieldError("name")}
               </div>
               <div>
-                <label className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground block mb-2">Email</label>
-                <input required type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })}
+                <label htmlFor="enquiry-email" className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground block mb-2">Email</label>
+                <input required type="email" id="enquiry-email" aria-invalid={Boolean(errors.email) || undefined} aria-describedby={errors.email ? "email-error" : undefined} value={form.email} onChange={(e) => updateField("email", e.target.value)}
                   className="w-full bg-transparent border-b border-border/60 py-3 text-foreground focus:outline-none focus:border-primary transition-smooth" />
+                {fieldError("email")}
               </div>
               <div>
-                <label className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground block mb-2">Phone</label>
-                <input type="tel" value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                <label htmlFor="enquiry-phone" className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground block mb-2">Phone</label>
+                <input required type="tel" autoComplete="tel" inputMode="tel" id="enquiry-phone" aria-invalid={Boolean(errors.phone) || undefined} aria-describedby={errors.phone ? "phone-error" : undefined} value={form.phone} onChange={(e) => updateField("phone", e.target.value)}
                   className="w-full bg-transparent border-b border-border/60 py-3 text-foreground focus:outline-none focus:border-primary transition-smooth" />
+                {fieldError("phone")}
               </div>
               <div>
                 <label className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground block mb-2">Event Type</label>
@@ -240,8 +282,9 @@ function Contact() {
                 </select>
               </div>
               <div>
-                <label className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground block mb-2">Event Date</label>
-                <DatePicker value={form.date} onChange={(date) => setForm({ ...form, date })} />
+                <label htmlFor="enquiry-date" className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground block mb-2">Event Date</label>
+                <DatePicker value={form.date} onChange={(date) => updateField("date", date)} invalid={Boolean(errors.date)} />
+                {fieldError("date")}
               </div>
             </div>
             <div>
@@ -249,11 +292,11 @@ function Contact() {
               <textarea required rows={5} value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })}
                 className="w-full bg-transparent border-b border-border/60 py-3 text-foreground focus:outline-none focus:border-primary transition-smooth resize-none" />
             </div>
-            <button type="submit"
+            <Button type="submit"
               disabled={submitting}
-              className="w-full sm:w-auto px-10 py-4 bg-gradient-gold text-primary-foreground text-xs tracking-[0.3em] uppercase hover-gold-glow transition-smooth disabled:opacity-60">
+              className="h-auto rounded-none w-full sm:w-auto px-10 py-4 bg-gradient-gold text-primary-foreground text-xs tracking-[0.3em] uppercase hover-gold-glow transition-smooth disabled:opacity-60">
               {submitting ? "Sending…" : "Send Enquiry"}
-            </button>
+            </Button>
           </form>
         </div>
       </div>
